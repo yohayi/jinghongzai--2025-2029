@@ -1,0 +1,34 @@
+{
+  "id": "medium-canvas-001",
+  "title": "画布与颜料的诗意",
+  "category": "艺术载体",
+  "subcategory": "画布与颜料",
+  "description": "传统媒介中的现代性探索",
+  "author": "意境探索者",
+  "created": "2024-01-15",
+  "updated": "2024-01-20",
+  "tags": ["油画", "水墨", "丙烯", "综合材料", "实验"],
+  "images": [
+    "作品1.jpg",
+    "作品2.jpg",
+    "作品3.jpg"
+  ],
+  "contentFiles": [
+    "introduction.md",
+    "techniques.md",
+    "artists.json"
+  ],
+  "metadata": {
+    "viewCount": 1560,
+    "likeCount": 89,
+    "commentCount": 24,
+    "interactive": true,
+    "userContributions": true
+  },
+  "settings": {
+    "allowUserPosts": true,
+    "customTags": true,
+    "searchable": true,
+    "visibleIn": ["homepage", "category", "search"]
+  }
+}
