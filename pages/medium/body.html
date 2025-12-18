@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="day-clear">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>身体与空间 | 不被定义的美 | 艺术载体</title>
+    <!-- 所有样式和脚本链接 -->
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">
+                <span class="logo-icon">🪐</span>
+                <span class="logo-text">不 被 定 义 的 美</span>
+            </a>
+            
+            <div class="nav-search">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="globalSearch" placeholder="搜索身体艺术、空间装置..." autocomplete="off">
+                    <div class="search-dropdown" id="searchResults"></div>
+                </div>
+                <div class="quick-tags">
+                    <span class="tag" data-tag="行为艺术">#行为艺术</span>
+                    <span class="tag" data-tag="身体绘画">#身体绘画</span>
+                    <span class="tag" data-tag="空间装置">#空间装置</span>
+                    <span class="tag" data-tag="舞蹈">#舞蹈</span>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="../../index.html"><i class="fas fa-home"></i> 主页</a></li>
+                <li class="nav-dropdown nav-active">
+                    <a href="../index.html"><i class="fas fa-paint-brush"></i> 艺术载体</a>
+                    <div class="dropdown-content">
+                        <a href="canvas.html">画布与颜料</a>
+                        <a href="digital.html">数字像素</a>
+                        <a href="body.html">身体与空间</a>
+                        <a href="sound.html">声音与波动</a>
+                    </div>
+                </li>
+                <!-- 其他分类链接 -->
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 身体与空间专属内容 -->
+    <section class="subpage-hero">
+        <div class="category-breadcrumb">
+            <a href="../../index.html" class="breadcrumb-link">主页</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="../index.html" class="breadcrumb-link">艺术载体</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>身体与空间</span>
+        </div>
+        
+        <h1 class="subpage-title">身体与空间</h1>
+        <p class="subpage-subtitle">
+            身体即画布，空间即媒介。行动中的美学，在场中的表达。
+            从行为艺术到空间装置，从舞蹈到身体绘画，身体在空间中书写临时性的诗。
+        </p>
+        
+        <div class="category-overview">
+            <div class="overview-card">
+                <h3><i class="fas fa-user"></i> 身体作为媒介</h3>
+                <p>行为艺术、身体绘画、舞蹈、表演、纹身、临时性身体艺术...</p>
+            </div>
+            
+            <div class="overview-card">
+                <h3><i class="fas fa-expand-arrows-alt"></i> 空间关系</h3>
+                <p>场域特定艺术、装置艺术、公共艺术、环境艺术、参与式艺术</p>
+            </div>
+            
+            <div class="overview-card">
+                <h3><i class="fas fa-users"></i> 社区活跃</h3>
+                <p>78位身体/空间艺术家，143件作品，持续在场中</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品墙部分 -->
+    <section class="works-section">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-people-arrows"></i> 身体与空间作品</h2>
+                
+                <div class="subpage-search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <!-- 关键：搜索框指向身体与空间案例文件夹 -->
+                    <input type="text" class="subpage-search" id="categorySearch" 
+                           placeholder="在身体与空间中搜索..." data-category="载体-身体与空间">
+                </div>
+            </div>
+            
+            <!-- 作品网格 - 从 assets/cases/载体-身体与空间/ 动态加载 -->
+            <div class="works-grid" id="worksContainer">
+                <div class="work-card">
+                    <div class="work-image">
+                        <div class="work-category">行为艺术</div>
+                        <div style="width:100%;height:100%;background:linear-gradient(135deg, #ff9a9e, #fad0c4);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;">
+                            正在从 assets/cases/载体-身体与空间/ 加载...
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3>时间的身体痕迹</h3>
+                        <div class="work-author">
+                            <i class="fas fa-user"></i> 在场者
+                        </div>
+                        <p class="work-desc">
+                            持续8小时的行为表演，用身体记录时间在空间中的流逝与痕迹。
+                        </p>
+                        <div class="work-tags">
+                            <span class="work-tag">行为艺术</span>
+                            <span class="work-tag">时间</span>
+                            <span class="work-tag">在场</span>
+                            <span class="work-tag">临时性</span>
+                        </div>
+                        <div class="work-meta">
+                            <span><i class="fas fa-heart"></i> 42</span>
+                            <span><i class="fas fa-eye"></i> 189</span>
+                            <span>5天前</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="work-card">
+                    <div class="work-image">
+                        <div class="work-category">空间装置</div>
+                        <div style="width:100%;height:100%;background:linear-gradient(135deg, #a18cd1, #fbc2eb);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;">
+                            assets/cases/载体-身体与空间/空间装置/
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3>呼吸的空间</h3>
+                        <div class="work-author">
+                            <i class="fas fa-user"></i> 空间诗人
+                        </div>
+                        <p class="work-desc">
+                            互动装置，观众进入空间触发灯光与声音变化，空间因呼吸而活。
+                        </p>
+                        <div class="work-tags">
+                            <span class="work-tag">空间装置</span>
+                            <span class="work-tag">互动</span>
+                            <span class="work-tag">呼吸</span>
+                            <span class="work-tag">场域特定</span>
+                        </div>
+                        <div class="work-meta">
+                            <span><i class="fas fa-heart"></i> 67</span>
+                            <span><i class="fas fa-eye"></i> 278</span>
+                            <span>2周前</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 不被定义的美板块 -->
+    <section id="contribute" class="undefined-section">
+        <div class="container">
+            <div class="undefined-header">
+                <h2><i class="fas fa-seedling"></i> 不被定义的身体美</h2>
+                <p>在此提交你的身体或空间艺术作品，它将存放在你的独立空间</p>
+            </div>
+            
+            <div class="contribute-form">
+                <div class="form-group">
+                    <input type="text" id="contributeTitle" placeholder="为你的身体/空间作品命名..." maxlength="50">
+                    <div class="char-count"><span id="titleCount">0</span>/50</div>
+                </div>
+                
+                <div class="form-group">
+                    <textarea id="contributeDesc" placeholder="描述你的作品理念、身体表达或空间关系..." rows="3" maxlength="300"></textarea>
+                    <div class="char-count"><span id="descCount">0</span>/300</div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <!-- 身体与空间专属选项 -->
+                        <select id="contributeMedium">
+                            <option value="">选择身体/空间媒介类型</option>
+                            <option value="行为艺术">行为艺术</option>
+                            <option value="身体绘画">身体绘画</option>
+                            <option value="舞蹈">舞蹈/表演</option>
+                            <option value="空间装置">空间装置</option>
+                            <option value="公共艺术">公共艺术</option>
+                            <option value="环境艺术">环境艺术</option>
+                            <option value="其他">其他身体/空间形式</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group tag-input-container">
+                        <div class="tag-input" id="tagInput">
+                            <input type="text" id="newTag" placeholder="创建你的身体/空间标签（回车添加）">
+                        </div>
+                        <div class="tag-preview" id="tagPreview"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>拖放作品图片/视频/文档</p>
+                        <input type="file" id="imageUpload" accept="image/*,video/*,.pdf,.doc">
+                        <div class="upload-preview" id="uploadPreview"></div>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button class="btn-secondary" id="clearForm">
+                        <i class="fas fa-eraser"></i> 清空
+                    </button>
+                    <button class="btn-primary" id="submitContribution">
+                        <i class="fas fa-paper-plane"></i> 发布到我的身体空间
+                    </button>
+                </div>
+                
+                <!-- 关键：用户投稿将保存到对应分类的用户空间 -->
+                <div class="user-space-link">
+                    <p>你的作品将保存在：<code id="userSpacePath">user_[your_id]/contributions/载体-身体与空间/</code></p>
+                    <a href="#" class="view-space-btn">查看我的身体艺术空间 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <!-- ... 页脚内容 ... -->
+    </footer>
+
+    <!-- JavaScript 文件 -->
+    <script src="../../script.js"></script>
+    <!-- 子页面专用脚本 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 身体与空间页面特定初始化
+            const searchBox = document.getElementById('categorySearch');
+            if (searchBox) {
+                searchBox.setAttribute('data-category', '载体-身体与空间');
+            }
+            
+            // 更新用户空间路径显示
+            const userSpacePath = document.getElementById('userSpacePath');
+            if (userSpacePath) {
+                const userId = localStorage.getItem('userId') || 'user_new';
+                userSpacePath.textContent = `${userId}/contributions/载体-身体与空间/`;
+            }
+            
+            // 身体与空间分类特定数据加载
+            loadBodyCategoryData();
+        });
+        
+        async function loadBodyCategoryData() {
+            // 从 assets/cases/载体-身体与空间/ 加载数据
+            console.log('正在从 assets/cases/载体-身体与空间/ 加载身体与空间作品...');
+        }
+    </script>
+</body>
+</html>
