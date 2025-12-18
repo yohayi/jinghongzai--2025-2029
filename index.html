@@ -8,9 +8,302 @@
     <link rel="stylesheet" href="意境调节器.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@300;400;700;900&family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
+    <style>
+        /* 主页专属优化样式 */
+        .home-hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .home-title {
+            font-size: 4.5rem;
+            font-family: 'Ma Shan Zheng', cursive;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #8a6dae, #ff9a8b, #4ecdc4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: titleGradient 8s infinite linear;
+            background-size: 300% 300%;
+        }
+        
+        @keyframes titleGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .home-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+        
+        .home-highlight {
+            color: var(--color-accent);
+            font-weight: bold;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .home-highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--color-accent);
+            opacity: 0.3;
+            border-radius: 2px;
+        }
+        
+        .home-portals {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1300px;
+            margin: 3rem auto;
+        }
+        
+        .home-portal {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            border-radius: 24px;
+            padding: 2.5rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .home-portal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+        }
+        
+        .home-portal:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            border-color: var(--color-primary);
+        }
+        
+        .portal-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            animation: floatIcon 3s ease-in-out infinite;
+        }
+        
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .home-portal h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+        
+        .portal-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        /* 动态文字效果 */
+        .dynamic-text-container {
+            min-height: 60px;
+            margin: 2rem 0;
+        }
+        
+        .dynamic-text {
+            font-size: 1.2rem;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .text-changing {
+            color: var(--color-accent);
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .text-changing::after {
+            content: '|';
+            animation: blink 1s infinite;
+            margin-left: 2px;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        /* 网站推荐专区 */
+        .website-recommendations {
+            max-width: 1400px;
+            margin: 5rem auto;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        
+        .recommendations-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .recommendations-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .websites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .website-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--color-primary);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-primary);
+            display: block;
+        }
+        
+        .website-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .website-icon {
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .website-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-primary);
+        }
+        
+        .website-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        /* 联系方式突出显示 */
+        .contact-emphasis {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(138, 109, 174, 0.1), rgba(255, 154, 139, 0.1));
+            border-radius: 16px;
+            margin: 3rem auto;
+            max-width: 800px;
+        }
+        
+        .contact-info-large {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+        
+        .contact-item i {
+            color: var(--color-primary);
+            font-size: 1.3rem;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .home-title {
+                font-size: 2.8rem;
+            }
+            
+            .home-subtitle {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+            
+            .home-portals {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+            
+            .home-portal {
+                padding: 2rem;
+            }
+            
+            .websites-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info-large {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .home-title {
+                font-size: 2.2rem;
+            }
+            
+            .home-hero {
+                padding: 100px 1rem 60px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- 动态意境背景画布 -->
+    <!-- 动态背景画布 -->
     <canvas id="artisticBackground"></canvas>
     
     <!-- 意境调节器 -->
@@ -68,7 +361,7 @@
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-active"><i class="fas fa-home"></i> 意境</a></li>
                 <li class="nav-dropdown">
-                    <a href="#"><i class="fas fa-paint-brush"></i> 艺术载体</a>
+                    <a href="pages/medium/index.html"><i class="fas fa-paint-brush"></i> 艺术载体</a>
                     <div class="dropdown-content">
                         <a href="pages/medium/canvas.html">画布与颜料</a>
                         <a href="pages/medium/digital.html">数字像素</a>
@@ -77,7 +370,7 @@
                     </div>
                 </li>
                 <li class="nav-dropdown">
-                    <a href="#"><i class="fas fa-shapes"></i> 艺术形式</a>
+                    <a href="pages/form/index.html"><i class="fas fa-shapes"></i> 艺术形式</a>
                     <div class="dropdown-content">
                         <a href="pages/form/abstract.html">抽象</a>
                         <a href="pages/form/narrative.html">叙事</a>
@@ -86,7 +379,7 @@
                     </div>
                 </li>
                 <li class="nav-dropdown">
-                    <a href="#"><i class="fas fa-history"></i> 历史脉络</a>
+                    <a href="pages/history/index.html"><i class="fas fa-history"></i> 历史脉络</a>
                     <div class="dropdown-content">
                         <a href="pages/history/ancient.html">古典时期</a>
                         <a href="pages/history/renaissance.html">文艺复兴</a>
@@ -99,55 +392,56 @@
         </div>
     </nav>
 
-    <!-- 英雄区域 -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-title-container">
-                <h1 class="hero-title">
-                    <span class="title-line">美，是<span class="highlight">不</span></span>
-                    <span class="title-line">被驯服的<span class="highlight">意</span>境</span>
-                    <span class="title-line">与<span class="highlight">诗</span></span>
-                </h1>
-            </div>
+    <!-- 主页英雄区域 -->
+    <section id="home" class="home-hero">
+        <h1 class="home-title">
+            美，是<span class="home-highlight">不被驯服</span>的<br>
+            意境与诗
+        </h1>
+        
+        <p class="home-subtitle">
+            这里没有边界，只有<span class="text-changing" id="changingWord">流动的定义</span>。
+            从传统画布到数字像素，从身体舞动到声音波动，
+            美在每一个载体中呼吸，在每一种形式中生长。
+        </p>
+        
+        <div class="dynamic-text-container">
+            <p class="dynamic-text" id="dynamicText">
+                此刻，<span id="particleWord">意境</span>正在生成...
+            </p>
+        </div>
+
+        <!-- 三大门户 -->
+        <div class="home-portals">
+            <a href="pages/medium/index.html" class="home-portal">
+                <div class="portal-icon">🖼️</div>
+                <h2>艺术载体探索</h2>
+                <p>从传统画布到数字像素，载体即表达。每一种媒介都有其独特的语言和可能性。</p>
+                <div class="portal-stats">
+                    <span><i class="fas fa-paint-brush"></i> 4种主要载体</span>
+                    <span><i class="fas fa-image"></i> 891件作品</span>
+                </div>
+            </a>
             
-            <div class="hero-subtitle">
-                <p class="flowing-text" id="dynamicText">
-                    这里没有边界，只有<span class="text-rainbow">流动的定义</span>
-                </p>
-                <div class="particle-text" id="particleWords"></div>
-            </div>
+            <a href="pages/form/index.html" class="home-portal">
+                <div class="portal-icon">🌀</div>
+                <h2>艺术形式边界</h2>
+                <p>抽象、叙事、互动、观念...形式正在溶解，美在结构的缝隙中生长。</p>
+                <div class="portal-stats">
+                    <span><i class="fas fa-shapes"></i> 4种核心形式</span>
+                    <span><i class="fas fa-tags"></i> 89种美学标签</span>
+                </div>
+            </a>
             
-            <div class="portal-grid">
-                <a href="pages/medium/index.html" class="portal-card" data-category="medium">
-                    <div class="portal-icon">🖼️</div>
-                    <h3>载体探索</h3>
-                    <p>从传统画布到数字像素，载体即表达</p>
-                    <div class="portal-stats">
-                        <span><i class="fas fa-image"></i> 14个载体分类</span>
-                        <span><i class="fas fa-users"></i> 236件作品</span>
-                    </div>
-                </a>
-                
-                <a href="pages/form/index.html" class="portal-card" data-category="form">
-                    <div class="portal-icon">🌀</div>
-                    <h3>形式边界</h3>
-                    <p>抽象、叙事、互动...形式正在溶解</p>
-                    <div class="portal-stats">
-                        <span><i class="fas fa-tags"></i> 89种标签</span>
-                        <span><i class="fas fa-comment"></i> 512条讨论</span>
-                    </div>
-                </a>
-                
-                <a href="pages/history/index.html" class="portal-card" data-category="history">
-                    <div class="portal-icon">📜</div>
-                    <h3>时间之河</h3>
-                    <p>美在历史中流动，在时代中呼吸</p>
-                    <div class="portal-stats">
-                        <span><i class="fas fa-timeline"></i> 交互时间轴</span>
-                        <span><i class="fas fa-landmark"></i> 7个时代</span>
-                    </div>
-                </a>
-            </div>
+            <a href="pages/history/index.html" class="home-portal">
+                <div class="portal-icon">📜</div>
+                <h2>时间之河</h2>
+                <p>从古典和谐到当代实验，美在历史中流动，在时代对话中重生。</p>
+                <div class="portal-stats">
+                    <span><i class="fas fa-history"></i> 4个时代脉络</span>
+                    <span><i class="fas fa-users"></i> 312位历史艺术家</span>
+                </div>
+            </a>
         </div>
         
         <div class="scroll-guide">
@@ -158,26 +452,106 @@
         </div>
     </section>
 
-    <!-- 动态案例展示 -->
-    <section class="dynamic-cases">
-        <div class="section-header">
-            <h2><i class="fas fa-star"></i> 意境瞬间</h2>
-            <p>从独立案例文件夹中动态加载的精选作品</p>
-            <div class="case-filter">
-                <button class="filter-btn active" data-filter="all">全部</button>
-                <button class="filter-btn" data-filter="trending">流动</button>
-                <button class="filter-btn" data-filter="new">新生</button>
-                <button class="filter-btn" data-filter="interactive">互动</button>
+    <!-- 网站推荐专区 -->
+    <section class="website-recommendations">
+        <h2 class="recommendations-title">
+            <i class="fas fa-globe-asia"></i> 我的其他空间
+        </h2>
+        <p class="recommendations-subtitle">
+            探索我在不同领域的创作与思考，每个空间都是不被定义的美的一部分
+        </p>
+        
+        <div class="websites-grid">
+            <a href="https://yohayi.github.io/-history/" target="_blank" class="website-card">
+                <div class="website-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>信技化生-技术交流网站</h3>
+                <p>技术与人文的对话，代码中的诗意，数字时代的学习与思考空间。</p>
+            </a>
+            
+            <a href="https://yohayi.github.io/jinghongzhai--/" target="_blank" class="website-card">
+                <div class="website-icon">
+                    <i class="fas fa-pagoda"></i>
+                </div>
+                <h3>"惊鸿斋"官方网站</h3>
+                <p>传统文化与现代审美的融合，东方美学的当代诠释与创新表达。</p>
+            </a>
+            
+            <a href="https://yohayi.github.io/my-personal-edu-website/" target="_blank" class="website-card">
+                <div class="website-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>杭州市教育总结</h3>
+                <p>教育实践的记录与反思，教学创新的探索与分享。</p>
+            </a>
+            
+            <a href="https://yohayi.github.io/2026--/index.html" target="_blank" class="website-card">
+                <div class="website-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>教育数据与交流网站</h3>
+                <p>数据驱动的教育分析，可视化呈现教育现象与规律。</p>
+            </a>
+            
+            <a href="https://yohayi.github.io/geometry-string-map/" target="_blank" class="website-card">
+                <div class="website-icon">
+                    <i class="fas fa-atom"></i>
+                </div>
+                <h3>几何弦理论课后交流</h3>
+                <p>理论物理的视觉化探索，数学之美在物理中的体现。</p>
+            </a>
+            
+            <a href="https://yohayi.github.io/BDCG---/" target="_blank" class="website-card">
+                <div class="website-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <h3>BDCG游戏技术与美术素材网站</h3>
+                <p>游戏开发的技术与艺术，互动媒体的创意与实践。</p>
+            </a>
+            
+            <a href="https://yohayi.github.io/yohayi-/" target="_blank" class="website-card">
+                <div class="website-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>游海洋个人网站</h3>
+                <p>个人创作与思考的综合空间，多领域探索的记录。</p>
+            </a>
+            
+            <a href="https://yohayi.github.io/-AI-/" target="_blank" class="website-card">
+                <div class="website-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>流式AI监控</h3>
+                <p>人工智能的实时应用，数据流的可视化与智能分析。</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- 联系方式突出显示 -->
+    <section class="contact-emphasis">
+        <h2 style="color: var(--color-primary); margin-bottom: 1rem;">
+            <i class="fas fa-comments"></i> 联系与合作
+        </h2>
+        <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 1.5rem;">
+            如果你对不被定义的美有共鸣，或希望探讨艺术、技术、教育的跨界融合，
+            欢迎通过以下方式联系我。
+        </p>
+        
+        <div class="contact-info-large">
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span><strong>电话：</strong>13377886896</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span><strong>邮箱：</strong>3114228696@qq.com</span>
             </div>
         </div>
         
-        <div class="cases-container" id="casesContainer">
-            <!-- 案例将通过JavaScript从cases文件夹动态加载 -->
-            <div class="loading-cases">
-                <div class="loading-spinner"></div>
-                <p>正在从独立文件夹加载意境案例...</p>
-            </div>
-        </div>
+        <p style="margin-top: 1.5rem; color: var(--text-secondary); font-size: 0.9rem;">
+            期待与你在不被定义的美学空间中相遇、对话、共创。
+        </p>
     </section>
 
     <!-- 用户定义区域 -->
@@ -341,8 +715,215 @@
     <!-- 脚本 -->
     <script src="script.js"></script>
     <script src="意境调节器.js"></script>
-    <script src="动态背景.js"></script>
-    <script src="案例加载器.js"></script>
-    <script src="用户系统.js"></script>
+    <script>
+        // 主页专属交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 设置当前年份
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // 动态文字效果
+            const changingWord = document.getElementById('changingWord');
+            const particleWord = document.getElementById('particleWord');
+            const dynamicText = document.getElementById('dynamicText');
+            
+            const wordList = [
+                '流动的定义', '未被书写', '瞬间的诗', '呼吸的美',
+                '解构的秩序', '混沌的韵律', '空白的意义', '生长的形式'
+            ];
+            
+            const particleWords = [
+                '意境', '流动', '解构', '新生', '诗性',
+                '混沌', '韵律', '空白', '呼吸', '生长'
+            ];
+            
+            let wordIndex = 0;
+            let particleIndex = 0;
+            
+            // 更换主文字
+            setInterval(() => {
+                changingWord.style.opacity = 0;
+                setTimeout(() => {
+                    wordIndex = (wordIndex + 1) % wordList.length;
+                    changingWord.textContent = wordList[wordIndex];
+                    changingWord.style.opacity = 1;
+                }, 500);
+            }, 3000);
+            
+            // 更换粒子文字
+            setInterval(() => {
+                particleWord.style.opacity = 0;
+                particleWord.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    particleIndex = (particleIndex + 1) % particleWords.length;
+                    particleWord.textContent = particleWords[particleIndex];
+                    particleWord.style.opacity = 1;
+                    particleWord.style.transform = 'translateY(0)';
+                }, 300);
+            }, 2000);
+            
+            // 动态文本变化
+            const textVariations = [
+                "此刻，<span id='particleWord'>意境</span>正在生成...",
+                "这里，<span id='particleWord'>美</span>拒绝被定义...",
+                "现在，<span id='particleWord'>形式</span>正在溶解...",
+                "瞬间，<span id='particleWord'>边界</span>正在消失..."
+            ];
+            
+            let textIndex = 0;
+            setInterval(() => {
+                dynamicText.style.opacity = 0;
+                setTimeout(() => {
+                    textIndex = (textIndex + 1) % textVariations.length;
+                    dynamicText.innerHTML = textVariations[textIndex];
+                    // 重新获取particleWord引用
+                    const newParticleWord = document.getElementById('particleWord');
+                    if (newParticleWord) {
+                        // 为新的particleWord设置初始状态
+                        newParticleWord.style.opacity = 1;
+                        newParticleWord.style.transform = 'translateY(0)';
+                    }
+                    dynamicText.style.opacity = 1;
+                }, 500);
+            }, 4000);
+            
+            // 实时统计数据
+            updateLiveStats();
+            setInterval(updateLiveStats, 30000);
+            
+            function updateLiveStats() {
+                const stats = {
+                    cases: Math.floor(120 + Math.random() * 10),
+                    users: Math.floor(85 + Math.random() * 5),
+                    tags: Math.floor(230 + Math.random() * 15),
+                    contributions: Math.floor(512 + Math.random() * 20)
+                };
+                
+                document.getElementById('liveStats').innerHTML = 
+                    `${stats.cases}个案例 · ${stats.users}位探索者 · ${stats.tags}种标签`;
+                
+                document.getElementById('lastUpdate').textContent = 
+                    new Date().toLocaleTimeString('zh-CN', { 
+                        hour: '2-digit', 
+                        minute: '2-digit' 
+                    });
+            }
+            
+            // 导航栏滚动效果
+            let lastScroll = 0;
+            window.addEventListener('scroll', () => {
+                const navbar = document.querySelector('.navbar');
+                const currentScroll = window.pageYOffset;
+                
+                if (currentScroll > lastScroll && currentScroll > 100) {
+                    navbar.style.transform = 'translateY(-100%)';
+                    navbar.style.opacity = '0.9';
+                } else {
+                    navbar.style.transform = 'translateY(0)';
+                    navbar.style.opacity = '1';
+                }
+                
+                lastScroll = currentScroll;
+            });
+            
+            // 平滑滚动到锚点
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+                    
+                    e.preventDefault();
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+        
+        // 简化的意境调节器初始化
+        class SimpleMoodController {
+            constructor() {
+                this.currentMood = document.getElementById('currentMood');
+                this.timeRing = document.getElementById('timeRing');
+                this.weatherRing = document.getElementById('weatherRing');
+                
+                this.moods = [
+                    { time: '晨曦', weather: '初晴', text: '意境：晨曦初晴' },
+                    { time: '正午', weather: '明朗', text: '意境：正午明朗' },
+                    { time: '黄昏', weather: '细雨', text: '意境：黄昏细雨' },
+                    { time: '深夜', weather: '静谧', text: '意境：深夜静谧' },
+                    { time: '黎明', weather: '薄雾', text: '意境：黎明薄雾' }
+                ];
+                
+                this.currentMoodIndex = 0;
+                this.init();
+            }
+            
+            init() {
+                // 时间环点击事件
+                if (this.timeRing) {
+                    this.timeRing.addEventListener('click', () => {
+                        this.changeMood();
+                    });
+                }
+                
+                // 天气环点击事件
+                if (this.weatherRing) {
+                    this.weatherRing.addEventListener('click', () => {
+                        this.changeMood();
+                    });
+                }
+                
+                // 初始显示
+                this.updateDisplay();
+                
+                // 自动变化
+                setInterval(() => {
+                    this.changeMood();
+                }, 10000);
+            }
+            
+            changeMood() {
+                this.currentMoodIndex = (this.currentMoodIndex + 1) % this.moods.length;
+                this.updateDisplay();
+                
+                // 更新CSS变量
+                this.updateCSSVariables();
+            }
+            
+            updateDisplay() {
+                const mood = this.moods[this.currentMoodIndex];
+                if (this.currentMood) {
+                    this.currentMood.textContent = mood.text;
+                    this.currentMood.style.opacity = 0;
+                    setTimeout(() => {
+                        this.currentMood.style.opacity = 1;
+                    }, 300);
+                }
+            }
+            
+            updateCSSVariables() {
+                const hues = [280, 180, 20, 240, 200];
+                const currentHue = hues[this.currentMoodIndex % hues.length];
+                
+                // 更新CSS变量
+                document.documentElement.style.setProperty('--primary-hue', currentHue);
+                
+                // 触发CSS重新计算
+                document.documentElement.style.opacity = '0.999';
+                setTimeout(() => {
+                    document.documentElement.style.opacity = '1';
+                }, 10);
+            }
+        }
+        
+        // 初始化意境调节器
+        document.addEventListener('DOMContentLoaded', () => {
+            const moodController = new SimpleMoodController();
+        });
+    </script>
 </body>
 </html>
