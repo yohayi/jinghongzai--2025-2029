@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="day-clear">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数字像素 | 不被定义的美 | 艺术载体</title>
+    <!-- 所有样式和脚本链接（与canvas.html相同） -->
+</head>
+<body>
+    <!-- 导航栏（与canvas.html相同，但当前激活页面不同） -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- ... 导航内容 ... -->
+        </div>
+    </nav>
+
+    <!-- 数字像素专属内容 -->
+    <section class="subpage-hero">
+        <div class="category-breadcrumb">
+            <a href="../../index.html" class="breadcrumb-link">主页</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="../index.html" class="breadcrumb-link">艺术载体</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>数字像素</span>
+        </div>
+        
+        <h1 class="subpage-title">数字像素</h1>
+        <p class="subpage-subtitle">
+            虚拟世界中的色彩构成，像素作为最小单元构建无限可能。
+            从0到255的RGB值，代码中的诗意，算法生成的美学。
+        </p>
+        
+        <div class="category-overview">
+            <div class="overview-card">
+                <h3><i class="fas fa-laptop-code"></i> 数字技术</h3>
+                <p>算法艺术、生成艺术、数据可视化、交互装置、虚拟现实...</p>
+            </div>
+            
+            <div class="overview-card">
+                <h3><i class="fas fa-binary"></i> 像素特性</h3>
+                <p>分辨率、RGB值、抗锯齿、像素艺术、位图与矢量</p>
+            </div>
+            
+            <div class="overview-card">
+                <h3><i class="fas fa-users"></i> 社区活跃</h3>
+                <p>96位数字艺术家，214件作品，持续编码中</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品墙部分 -->
+    <section class="works-section">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-code"></i> 数字作品墙</h2>
+                
+                <div class="subpage-search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <!-- 关键：搜索框指向特定案例文件夹 -->
+                    <input type="text" class="subpage-search" id="categorySearch" 
+                           placeholder="在数字像素中搜索..." data-category="载体-数字像素">
+                </div>
+            </div>
+            
+            <!-- 作品网格 - 从 assets/cases/载体-数字像素/ 动态加载 -->
+            <div class="works-grid" id="worksContainer">
+                <!-- 作品卡片将从独立文件夹加载 -->
+                <div class="work-card">
+                    <div class="work-image">
+                        <div class="work-category">算法艺术</div>
+                        <div style="width:100%;height:100%;background:linear-gradient(135deg, #4ecdc4, #556270);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;">
+                            正在从 assets/cases/载体-数字像素/ 加载...
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3>代码的诗意</h3>
+                        <div class="work-author">
+                            <i class="fas fa-user"></i> 算法诗人
+                        </div>
+                        <p class="work-desc">
+                            使用Processing创作的生成艺术，每一帧都是算法计算出的独特图案。
+                        </p>
+                        <div class="work-tags">
+                            <span class="work-tag">算法</span>
+                            <span class="work-tag">生成艺术</span>
+                            <span class="work-tag">Processing</span>
+                            <span class="work-tag">代码</span>
+                        </div>
+                        <div class="work-meta">
+                            <span><i class="fas fa-heart"></i> 58</span>
+                            <span><i class="fas fa-eye"></i> 203</span>
+                            <span>2天前</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="work-card">
+                    <div class="work-image">
+                        <div class="work-category">像素艺术</div>
+                        <div style="width:100%;height:100%;background:linear-gradient(135deg, #3a7bd5, #00d2ff);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;">
+                            assets/cases/载体-数字像素/像素艺术/
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3>复古像素世界</h3>
+                        <div class="work-author">
+                            <i class="fas fa-user"></i> 像素怀旧者
+                        </div>
+                        <p class="work-desc">
+                            致敬8-bit时代的像素艺术，在有限的分辨率中创造无限想象。
+                        </p>
+                        <div class="work-tags">
+                            <span class="work-tag">像素艺术</span>
+                            <span class="work-tag">复古</span>
+                            <span class="work-tag">8-bit</span>
+                            <span class="work-tag">怀旧</span>
+                        </div>
+                        <div class="work-meta">
+                            <span><i class="fas fa-heart"></i> 72</span>
+                            <span><i class="fas fa-eye"></i> 315</span>
+                            <span>1周前</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 不被定义的美板块 -->
+    <section id="contribute" class="undefined-section">
+        <div class="container">
+            <div class="undefined-header">
+                <h2><i class="fas fa-seedling"></i> 不被定义的数字美</h2>
+                <p>在此提交你的数字艺术作品，它将存放在你的独立空间</p>
+            </div>
+            
+            <div class="contribute-form">
+                <div class="form-group">
+                    <input type="text" id="contributeTitle" placeholder="为你的数字作品命名..." maxlength="50">
+                    <div class="char-count"><span id="titleCount">0</span>/50</div>
+                </div>
+                
+                <div class="form-group">
+                    <textarea id="contributeDesc" placeholder="描述你的创作过程、使用的技术或算法..." rows="3" maxlength="300"></textarea>
+                    <div class="char-count"><span id="descCount">0</span>/300</div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <!-- 数字像素专属选项 -->
+                        <select id="contributeMedium">
+                            <option value="">选择数字媒介类型</option>
+                            <option value="算法艺术">算法艺术</option>
+                            <option value="像素艺术">像素艺术</option>
+                            <option value="数据可视化">数据可视化</option>
+                            <option value="交互装置">交互装置</option>
+                            <option value="VR/AR">VR/AR艺术</option>
+                            <option value="生成艺术">生成艺术</option>
+                            <option value="其他">其他数字形式</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group tag-input-container">
+                        <div class="tag-input" id="tagInput">
+                            <input type="text" id="newTag" placeholder="创建你的数字标签（回车添加）">
+                        </div>
+                        <div class="tag-preview" id="tagPreview"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>拖放数字作品图片/GIF/代码片段</p>
+                        <input type="file" id="imageUpload" accept="image/*,.gif,.txt,.js,.py">
+                        <div class="upload-preview" id="uploadPreview"></div>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button class="btn-secondary" id="clearForm">
+                        <i class="fas fa-eraser"></i> 清空
+                    </button>
+                    <button class="btn-primary" id="submitContribution">
+                        <i class="fas fa-paper-plane"></i> 发布到我的数字空间
+                    </button>
+                </div>
+                
+                <!-- 关键：用户投稿将保存到对应分类的用户空间 -->
+                <div class="user-space-link">
+                    <p>你的作品将保存在：<code id="userSpacePath">user_[your_id]/contributions/载体-数字像素/</code></p>
+                    <a href="#" class="view-space-btn">查看我的数字空间 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚（与canvas.html相同） -->
+    <footer>
+        <!-- ... 页脚内容 ... -->
+    </footer>
+
+    <!-- JavaScript 文件 -->
+    <script src="../../script.js"></script>
+    <!-- 子页面专用脚本 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 数字像素页面特定初始化
+            const searchBox = document.getElementById('categorySearch');
+            if (searchBox) {
+                searchBox.setAttribute('data-category', '载体-数字像素');
+            }
+            
+            // 更新用户空间路径显示
+            const userSpacePath = document.getElementById('userSpacePath');
+            if (userSpacePath) {
+                const userId = localStorage.getItem('userId') || 'user_new';
+                userSpacePath.textContent = `${userId}/contributions/载体-数字像素/`;
+            }
+            
+            // 数字像素分类特定数据加载
+            loadDigitalCategoryData();
+        });
+        
+        async function loadDigitalCategoryData() {
+            // 从 assets/cases/载体-数字像素/ 加载数据
+            console.log('正在从 assets/cases/载体-数字像素/ 加载数字像素作品...');
+            // 实际应使用fetch加载：../../assets/cases/载体-数字像素/config.json
+        }
+    </script>
+</body>
+</html>
