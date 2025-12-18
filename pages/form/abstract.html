@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="day-clear">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抽象形式 | 不被定义的美 | 艺术形式</title>
+    <!-- 样式和脚本链接（与canvas.html相同） -->
+</head>
+<body>
+    <!-- 导航栏（当前激活艺术形式-抽象） -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">
+                <span class="logo-icon">🪐</span>
+                <span class="logo-text">不 被 定 义 的 美</span>
+            </a>
+            
+            <div class="nav-search">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="globalSearch" placeholder="搜索抽象艺术、非具象..." autocomplete="off">
+                    <div class="search-dropdown" id="searchResults"></div>
+                </div>
+                <div class="quick-tags">
+                    <span class="tag" data-tag="抽象表现主义">#抽象表现主义</span>
+                    <span class="tag" data-tag="极简主义">#极简主义</span>
+                    <span class="tag" data-tag="色彩构成">#色彩构成</span>
+                    <span class="tag" data-tag="几何抽象">#几何抽象</span>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="../../index.html"><i class="fas fa-home"></i> 主页</a></li>
+                <li class="nav-dropdown">
+                    <a href="../medium/index.html"><i class="fas fa-paint-brush"></i> 艺术载体</a>
+                    <div class="dropdown-content">
+                        <a href="../medium/canvas.html">画布与颜料</a>
+                        <a href="../medium/digital.html">数字像素</a>
+                        <a href="../medium/body.html">身体与空间</a>
+                        <a href="../medium/sound.html">声音与波动</a>
+                    </div>
+                </li>
+                <li class="nav-dropdown nav-active">
+                    <a href="../form/index.html"><i class="fas fa-shapes"></i> 艺术形式</a>
+                    <div class="dropdown-content">
+                        <a href="abstract.html">抽象</a>
+                        <a href="narrative.html">叙事</a>
+                        <a href="interactive.html">互动</a>
+                        <a href="conceptual.html">观念</a>
+                    </div>
+                </li>
+                <!-- 其他分类链接 -->
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 抽象形式专属内容 -->
+    <section class="subpage-hero">
+        <div class="category-breadcrumb">
+            <a href="../../index.html" class="breadcrumb-link">主页</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="index.html" class="breadcrumb-link">艺术形式</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>抽象形式</span>
+        </div>
+        
+        <h1 class="subpage-title">抽象形式</h1>
+        <p class="subpage-subtitle">
+            剥离具象，直达本质。色彩、线条、形状获得自主表达的权利。
+            抽象不是对现实的简化，而是对情感、概念、能量的直接视觉化。
+            在这里，形式本身就是内容，观看本身就是体验。
+        </p>
+        
+        <div class="category-overview">
+            <div class="overview-card">
+                <h3><i class="fas fa-palette"></i> 主要流派</h3>
+                <p>抽象表现主义、极简主义、几何抽象、抒情抽象、色域绘画...</p>
+            </div>
+            
+            <div class="overview-card">
+                <h3><i class="fas fa-shapes"></i> 形式元素</h3>
+                <p>色彩、线条、形状、质感、空间、节奏、对比、平衡</p>
+            </div>
+            
+            <div class="overview-card">
+                <h3><i class="fas fa-users"></i> 社区活跃</h3>
+                <p>42位抽象艺术家，156件作品，持续探索中</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品墙部分 -->
+    <section class="works-section">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-brush"></i> 抽象作品墙</h2>
+                
+                <div class="subpage-search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <!-- 关键：搜索框指向抽象形式案例文件夹 -->
+                    <input type="text" class="subpage-search" id="categorySearch" 
+                           placeholder="在抽象形式中搜索..." data-category="形式-抽象">
+                </div>
+            </div>
+            
+            <!-- 作品网格 - 从 assets/cases/形式-抽象/ 动态加载 -->
+            <div class="works-grid" id="worksContainer">
+                <div class="work-card">
+                    <div class="work-image">
+                        <div class="work-category">色彩构成</div>
+                        <div style="width:100%;height:100%;background:linear-gradient(135deg, #ff6b6b, #4ecdc4);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;">
+                            正在从 assets/cases/形式-抽象/ 加载...
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3>色彩的呼吸</h3>
+                        <div class="work-author">
+                            <i class="fas fa-user"></i> 色彩探索者
+                        </div>
+                        <p class="work-desc">
+                            纯粹色彩的并置与渐变，创造视觉的呼吸感。没有形象，只有色彩的对话与节奏。
+                        </p>
+                        <div class="work-tags">
+                            <span class="work-tag">色彩构成</span>
+                            <span class="work-tag">渐变</span>
+                            <span class="work-tag">节奏</span>
+                            <span class="work-tag">情感抽象</span>
+                        </div>
+                        <div class="work-meta">
+                            <span><i class="fas fa-heart"></i> 58</span>
+                            <span><i class="fas fa-eye"></i> 234</span>
+                            <span>4天前</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="work-card">
+                    <div class="work-image">
+                        <div class="work-category">几何抽象</div>
+                        <div style="width:100%;height:100%;background:linear-gradient(135deg, #556270, #4ecdc4);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;">
+                            assets/cases/形式-抽象/几何抽象/
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3>秩序的韵律</h3>
+                        <div class="work-author">
+                            <i class="fas fa-user"></i> 几何诗人
+                        </div>
+                        <p class="work-desc">
+                            严谨的几何形状与精确的数学比例，在秩序中寻找美的纯粹形式。
+                        </p>
+                        <div class="work-tags">
+                            <span class="work-tag">几何抽象</span>
+                            <span class="work-tag">秩序</span>
+                            <span class="work-tag">比例</span>
+                            <span class="work-tag">极简</span>
+                        </div>
+                        <div class="work-meta">
+                            <span><i class="fas fa-heart"></i> 42</span>
+                            <span><i class="fas fa-eye"></i> 189</span>
+                            <span>1周前</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 标签云（抽象形式特有） -->
+            <div class="tag-cloud-section" style="margin-top:var(--space-xl);">
+                <h3 style="text-align:center;margin-bottom:var(--space-lg);color:var(--color-primary);">
+                    <i class="fas fa-tags"></i> 抽象形式标签云
+                </h3>
+                <div class="tag-cloud">
+                    <span class="cloud-tag" style="--i:1;">#抽象表现主义</span>
+                    <span class="cloud-tag" style="--i:2;">#极简主义</span>
+                    <span class="cloud-tag" style="--i:3;">#几何抽象</span>
+                    <span class="cloud-tag" style="--i:4;">#色彩构成</span>
+                    <span class="cloud-tag" style="--i:5;">#抒情抽象</span>
+                    <span class="cloud-tag" style="--i:6;">#行动绘画</span>
+                    <span class="cloud-tag" style="--i:7;">#色域绘画</span>
+                    <span class="cloud-tag" style="--i:8;">#硬边绘画</span>
+                    <span class="cloud-tag" style="--i:9;">#非具象</span>
+                    <span class="cloud-tag" style="--i:10;">#视觉音乐</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 不被定义的美板块 -->
+    <section id="contribute" class="undefined-section">
+        <div class="container">
+            <div class="undefined-header">
+                <h2><i class="fas fa-seedling"></i> 不被定义的抽象美</h2>
+                <p>在此提交你的抽象艺术作品，它可以来自任何载体，只要形式是抽象的</p>
+            </div>
+            
+            <div class="contribute-form">
+                <!-- ... 投稿表单（与之前类似） -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <!-- 抽象形式专属选项 -->
+                        <select id="contributeForm">
+                            <option value="">选择抽象形式类型</option>
+                            <option value="几何抽象">几何抽象</option>
+                            <option value="抒情抽象">抒情抽象</option>
+                            <option value="色彩抽象">色彩抽象</option>
+                            <option value="行动绘画">行动绘画</option>
+                            <option value="极简抽象">极简抽象</option>
+                            <option value="其他抽象">其他抽象形式</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- 关键：用户投稿将保存到对应分类的用户空间 -->
+                <div class="user-space-link">
+                    <p>你的作品将保存在：<code id="userSpacePath">user_[your_id]/contributions/形式-抽象/</code></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <!-- ... 页脚内容 ... -->
+    </footer>
+
+    <!-- JavaScript 文件 -->
+    <script src="../../script.js"></script>
+    <!-- 抽象形式页面特定脚本 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 抽象形式页面特定初始化
+            const searchBox = document.getElementById('categorySearch');
+            if (searchBox) {
+                searchBox.setAttribute('data-category', '形式-抽象');
+            }
+            
+            // 更新用户空间路径显示
+            const userSpacePath = document.getElementById('userSpacePath');
+            if (userSpacePath) {
+                const userId = localStorage.getItem('userId') || 'user_new';
+                userSpacePath.textContent = `${userId}/contributions/形式-抽象/`;
+            }
+            
+            // 抽象形式分类特定数据加载
+            loadAbstractCategoryData();
+        });
+        
+        async function loadAbstractCategoryData() {
+            // 从 assets/cases/形式-抽象/ 加载数据
+            console.log('正在从 assets/cases/形式-抽象/ 加载抽象形式作品...');
+        }
+    </script>
+</body>
+</html>
