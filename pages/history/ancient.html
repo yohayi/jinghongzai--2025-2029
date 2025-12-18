@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="day-clear">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>古典时期 | 不被定义的美 | 历史脉络</title>
+    <!-- 样式和脚本链接（与canvas.html相同） -->
+</head>
+<body>
+    <!-- 导航栏（当前激活历史-古典时期） -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">
+                <span class="logo-icon">🪐</span>
+                <span class="logo-text">不 被 定 义 的 美</span>
+            </a>
+            
+            <div class="nav-search">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="globalSearch" placeholder="搜索古典艺术、希腊罗马..." autocomplete="off">
+                    <div class="search-dropdown" id="searchResults"></div>
+                </div>
+                <div class="quick-tags">
+                    <span class="tag" data-tag="古希腊">#古希腊</span>
+                    <span class="tag" data-tag="古罗马">#古罗马</span>
+                    <span class="tag" data-tag="古典雕塑">#古典雕塑</span>
+                    <span class="tag" data-tag="和谐比例">#和谐比例</span>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="../../index.html"><i class="fas fa-home"></i> 主页</a></li>
+                <li class="nav-dropdown">
+                    <a href="../medium/index.html"><i class="fas fa-paint-brush"></i> 艺术载体</a>
+                    <div class="dropdown-content">
+                        <a href="../medium/canvas.html">画布与颜料</a>
+                        <a href="../medium/digital.html">数字像素</a>
+                        <a href="../medium/body.html">身体与空间</a>
+                        <a href="../medium/sound.html">声音与波动</a>
+                    </div>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="../form/index.html"><i class="fas fa-shapes"></i> 艺术形式</a>
+                    <div class="dropdown-content">
+                        <a href="../form/abstract.html">抽象</a>
+                        <a href="../form/narrative.html">叙事</a>
+                        <a href="../form/interactive.html">互动</a>
+                        <a href="../form/conceptual.html">观念</a>
+                    </div>
+                </li>
+                <li class="nav-dropdown nav-active">
+                    <a href="index.html"><i class="fas fa-history"></i> 历史脉络</a>
+                    <div class="dropdown-content">
+                        <a href="ancient.html">古典时期</a>
+                        <a href="renaissance.html">文艺复兴</a>
+                        <a href="modern.html">现代主义</a>
+                        <a href="contemporary.html">当代实验</a>
+                    </div>
+                </li>
+                <li><a href="#discussion"><i class="fas fa-comments"></i> 时代讨论</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 古典时期专属内容 -->
+    <section class="subpage-hero">
+        <div class="category-breadcrumb">
+            <a href="../../index.html" class="breadcrumb-link">主页</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="index.html" class="breadcrumb-link">历史脉络</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>古典时期</span>
+        </div>
+        
+        <h1 class="subpage-title">古典时期</h1>
+        <p class="subpage-subtitle">
+            从古希腊到古罗马，追求理想美的时代。和谐、比例、秩序是美的标准，
+            人体是完美的几何形式。在这里，美是数学，是永恒，是神性与人性的对话。
+        </p>
+        
+        <div class="category-overview">
+            <div class="overview-card">
+                <h3><i class="fas fa-monument"></i> 时间跨度</h3>
+                <p>古希腊（公元前8世纪-前146年）· 古罗马（公元前753年-476年）</p>
+            </div>
+            
+            <div class="overview-card">
+                <h3><i class="fas fa-ruler-combined"></i> 美学原则</h3>
+                <p>和谐比例、对称平衡、理想化、模仿自然、黄金分割</p>
+            </div>
+            
+            <div class="overview-card">
+                <h3><i class="fas fa-users"></i> 艺术遗产</h3>
+                <p>28件古典作品，12位代表性艺术家，影响西方艺术两千余年</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品墙部分 -->
+    <section class="works-section">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-landmark"></i> 古典艺术作品</h2>
+                
+                <div class="subpage-search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <!-- 关键：搜索框指向古典时期案例文件夹 -->
+                    <input type="text" class="subpage-search" id="categorySearch" 
+                           placeholder="在古典时期中搜索..." data-category="历史-古典时期">
+                </div>
+            </div>
+            
+            <!-- 作品网格 - 从 assets/cases/历史-古典时期/ 动态加载 -->
+            <div class="works-grid" id="worksContainer">
+                <div class="work-card">
+                    <div class="work-image">
+                        <div class="work-category">古希腊雕塑</div>
+                        <div style="width:100%;height:100%;background:linear-gradient(135deg, #ff9a8b, #fad0c4);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;">
+                            正在从 assets/cases/历史-古典时期/ 加载...
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3>米洛的维纳斯</h3>
+                        <div class="work-author">
+                            <i class="fas fa-user"></i> 亚历山德罗斯（传）
+                        </div>
+                        <p class="work-desc">
+                            古希腊雕塑的典范，完美的比例与和谐的曲线，体现古典时期对理想美的追求。
+                        </p>
+                        <div class="work-tags">
+                            <span class="work-tag">古希腊</span>
+                            <span class="work-tag">雕塑</span>
+                            <span class="work-tag">理想美</span>
+                            <span class="work-tag">比例</span>
+                        </div>
+                        <div class="work-meta">
+                            <span><i class="fas fa-heart"></i> 89</span>
+                            <span><i class="fas fa-eye"></i> 456</span>
+                            <span>约公元前130-100年</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="work-card">
+                    <div class="work-image">
+                        <div class="work-category">古罗马建筑</div>
+                        <div style="width:100%;height:100%;background:linear-gradient(135deg, #a18cd1, #fbc2eb);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;">
+                            assets/cases/历史-古典时期/古罗马建筑/
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3>万神殿</h3>
+                        <div class="work-author">
+                            <i class="fas fa-user"></i> 古罗马建筑师
+                        </div>
+                        <p class="work-desc">
+                            完美的几何结构，巨大的穹顶象征天穹，体现罗马人对秩序与和谐的追求。
+                        </p>
+                        <div class="work-tags">
+                            <span class="work-tag">古罗马</span>
+                            <span class="work-tag">建筑</span>
+                            <span class="work-tag">穹顶</span>
+                            <span class="work-tag">几何</span>
+                        </div>
+                        <div class="work-meta">
+                            <span><i class="fas fa-heart"></i> 76</span>
+                            <span><i class="fas fa-eye"></i> 389</span>
+                            <span>约118-128年</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 古典美学解析 -->
+    <section class="undefined-section" style="background:rgba(255,154,139,0.1);">
+        <div class="container">
+            <div class="undefined-header">
+                <h2><i class="fas fa-gem"></i> 古典美学解析</h2>
+                <p>理解古典时期的核心美学观念</p>
+            </div>
+            
+            <div class="era-content" style="grid-template-columns:2fr 1fr;">
+                <div>
+                    <h3 style="color:var(--color-primary);margin-bottom:var(--space-md);">
+                        <i class="fas fa-star"></i> 古典美的五大原则
+                    </h3>
+                    <ul class="characteristic-list" style="font-size:1.1rem;">
+                        <li><strong>和谐比例</strong>：黄金分割、完美比例是美的数学基础</li>
+                        <li><strong>对称平衡</strong>：左右对称、视觉平衡带来的稳定感</li>
+                        <li><strong>理想化</strong>：超越个体缺陷，追求普遍、完美的形式</li>
+                        <li><strong>模仿自然</strong>：但非简单复制，而是提炼自然中的完美</li>
+                        <li><strong>秩序与清晰</strong>：结构明确，形式清晰，拒绝混乱</li>
+                    </ul>
+                    
+                    <div style="margin-top:var(--space-lg);padding:var(--space-md);background:white;border-radius:var(--radius-md);">
+                        <h4 style="color:var(--color-primary);margin-bottom:var(--space-sm);">
+                            <i class="fas fa-quote-left"></i> 古典名言
+                        </h4>
+                        <p style="font-style:italic;color:var(--text-secondary);">
+                            "美是各部分之间的和谐比例。" —— 古希腊哲学家
+                        </p>
+                        <p style="font-style:italic;color:var(--text-secondary);">
+                            "艺术模仿自然。" —— 亚里士多德
+                        </p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 style="color:var(--color-primary);margin-bottom:var(--space-md);">
+                        <i class="fas fa-users"></i> 代表性艺术家
+                    </h3>
+                    <div style="background:white;padding:var(--space-md);border-radius:var(--radius-md);">
+                        <p><strong>菲迪亚斯</strong>：帕特农神庙雕塑，理想化的典范</p>
+                        <p><strong>普拉克西特列斯</strong>：女性人体的柔和表现</p>
+                        <p><strong>米隆</strong>：《掷铁饼者》，动态与平衡</p>
+                        <p><strong>波留克列特斯</strong>：《持矛者》，比例法则</p>
+                    </div>
+                    
+                    <div style="margin-top:var(--space-md);background:white;padding:var(--space-md);border-radius:var(--radius-md);">
+                        <h4 style="color:var(--color-primary);margin-bottom:var(--space-sm);">
+                            <i class="fas fa-book"></i> 关键文本
+                        </h4>
+                        <p>《理想国》柏拉图</p>
+                        <p>《诗学》亚里士多德</p>
+                        <p>《建筑十书》维特鲁威</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 不被定义的美板块 -->
+    <section id="contribute" class="undefined-section">
+        <div class="container">
+            <div class="undefined-header">
+                <h2><i class="fas fa-seedling"></i> 不被定义的古典美</h2>
+                <p>用当代视角重新解读古典美学，或创作受古典启发的现代作品</p>
+            </div>
+            
+            <div class="contribute-form">
+                <div class="form-group">
+                    <input type="text" id="contributeTitle" placeholder="为你的古典解读命名..." maxlength="50">
+                    <div class="char-count"><span id="titleCount">0</span>/50</div>
+                </div>
+                
+                <div class="form-group">
+                    <textarea id="contributeDesc" placeholder="你的古典解读、现代演绎或批判思考..." rows="4" maxlength="500"></textarea>
+                    <div class="char-count"><span id="descCount">0</span>/500</div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <!-- 古典时期专属选项 -->
+                        <select id="contributeEra">
+                            <option value="">选择古典分支</option>
+                            <option value="古希腊">古希腊艺术</option>
+                            <option value="古罗马">古罗马艺术</option>
+                            <option value="古典建筑">古典建筑</option>
+                            <option value="古典雕塑">古典雕塑</option>
+                            <option value="古典绘画">古典绘画（壁画）</option>
+                            <option value="跨古典">跨古典时期</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group tag-input-container">
+                        <div class="tag-input" id="tagInput">
+                            <input type="text" id="newTag" placeholder="创建古典美学标签（回车添加）">
+                        </div>
+                        <div class="tag-preview" id="tagPreview"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>拖放作品图片/分析图表/文本</p>
+                        <input type="file" id="imageUpload" accept="image/*,.pdf,.doc">
+                        <div class="upload-preview" id="uploadPreview"></div>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button class="btn-secondary" id="clearForm">
+                        <i class="fas fa-eraser"></i> 清空
+                    </button>
+                    <button class="btn-primary" id="submitContribution">
+                        <i class="fas fa-paper-plane"></i> 发布到我的古典空间
+                    </button>
+                </div>
+                
+                <!-- 关键：用户投稿将保存到对应分类的用户空间 -->
+                <div class="user-space-link">
+                    <p>你的作品将保存在：<code id="userSpacePath">user_[your_id]/contributions/历史-古典时期/</code></p>
+                    <a href="#" class="view-space-btn">查看我的古典美学空间 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 时代讨论区 -->
+    <section id="discussion" class="undefined-section" style="margin-top:var(--space-xl);background:rgba(255,255,255,0.9);">
+        <div class="container">
+            <div class="undefined-header">
+                <h2><i class="fas fa-comments"></i> 古典时期讨论区</h2>
+                <p>讨论古典美学、历史意义或现代诠释</p>
+            </div>
+            
+            <div class="discussion-list" id="discussionList">
+                <div class="discussion-item">
+                    <div class="discussion-header">
+                        <h4>古典美的"理想化"是逃避现实吗？</h4>
+                        <span class="discussion-meta">
+                            <span class="discussion-era">理论讨论</span>
+                            <span class="discussion-author">by 美学思考者</span>
+                            <span class="discussion-time">3天前</span>
+                        </span>
+                    </div>
+                    <p class="discussion-excerpt">
+                        古典艺术追求理想化的美，回避缺陷与不完美。这种美学态度在今天看来，
+                        是提供了超越性的精神追求，还是对现实问题的逃避？
+                    </p>
+                    <div class="discussion-stats">
+                        <span><i class="fas fa-comment"></i> 18回复</span>
+                        <span><i class="fas fa-heart"></i> 42赞同</span>
+                    </div>
+                </div>
+                
+                <div class="discussion-item">
+                    <div class="discussion-header">
+                        <h4>如何用数字技术重现古典艺术？</h4>
+                        <span class="discussion-meta">
+                            <span class="discussion-era">技术实践</span>
+                            <span class="discussion-author">by 数字古典者</span>
+                            <span class="discussion-time">1周前</span>
+                        </span>
+                    </div>
+                    <p class="discussion-excerpt">
+                        尝试用3D建模重建帕特农神庙，用算法生成符合黄金分割的图案。
+                        数字技术如何帮助我们重新理解古典美学原则？
+                    </p>
+                    <div class="discussion-stats">
+                        <span><i class="fas fa-comment"></i> 24回复</span>
+                        <span><i class="fas fa-heart"></i> 56赞同</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <!-- ... 页脚内容 ... -->
+    </footer>
+
+    <!-- JavaScript 文件 -->
+    <script src="../../script.js"></script>
+    <!-- 古典时期页面特定脚本 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 古典时期页面特定初始化
+            const searchBox = document.getElementById('categorySearch');
+            if (searchBox) {
+                searchBox.setAttribute('data-category', '历史-古典时期');
+            }
+            
+            // 更新用户空间路径显示
+            const userSpacePath = document.getElementById('userSpacePath');
+            if (userSpacePath) {
+                const userId = localStorage.getItem('userId') || 'user_new';
+                userSpacePath.textContent = `${userId}/contributions/历史-古典时期/`;
+            }
+            
+            // 古典时期分类特定数据加载
+            loadAncientCategoryData();
+        });
+        
+        async function loadAncientCategoryData() {
+            // 从 assets/cases/历史-古典时期/ 加载数据
+            console.log('正在从 assets/cases/历史-古典时期/ 加载古典时期作品...');
+        }
+    </script>
+</body>
+</html>
