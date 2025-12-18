@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="day-clear">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>艺术形式分类 | 不被定义的美</title>
+    
+    <!-- 样式文件 -->
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../意境调节器.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@300;400;700;900&family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
+    
+    <!-- 分类主页专用样式 -->
+    <style>
+        .category-homepage {
+            padding: var(--space-xl) var(--space-md);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .category-intro {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+            padding: var(--space-xl);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        
+        .category-title {
+            font-size: 3.5rem;
+            font-family: 'Ma Shan Zheng', cursive;
+            margin-bottom: var(--space-sm);
+            background: linear-gradient(135deg, #4ecdc4, #556270);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .category-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .form-categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin: var(--space-xl) 0;
+        }
+        
+        .form-category-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            text-decoration: none;
+            color: var(--text-primary);
+            box-shadow: var(--shadow-elevated);
+            transition: var(--transition-bounce);
+            border-top: 5px solid;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .form-category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: currentColor;
+            opacity: 0.3;
+        }
+        
+        .form-category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .form-category-card.abstract { border-color: #ff6b6b; color: #ff6b6b; }
+        .form-category-card.narrative { border-color: #4ecdc4; color: #4ecdc4; }
+        .form-category-card.interactive { border-color: #45b7d1; color: #45b7d1; }
+        .form-category-card.conceptual { border-color: #96ceb4; color: #96ceb4; }
+        
+        .form-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+        }
+        
+        .form-category-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .form-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-md);
+            padding-top: var(--space-sm);
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        /* 时间轴样式 */
+        .form-timeline {
+            margin: var(--space-xl) 0;
+            padding: var(--space-xl);
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: var(--radius-lg);
+        }
+        
+        .timeline-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, var(--color-primary), var(--color-accent));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: var(--space-md);
+            background: white;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-elevated);
+        }
+        
+        /* 标签云 */
+        .tag-cloud-section {
+            margin: var(--space-xl) 0;
+        }
+        
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            justify-content: center;
+            padding: var(--space-lg);
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: var(--radius-lg);
+            min-height: 200px;
+        }
+        
+        .cloud-tag {
+            padding: 8px 16px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: white;
+            border-radius: var(--radius-full);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            animation: floatTag 3s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.2s);
+        }
+        
+        .cloud-tag:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        @keyframes floatTag {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- 动态背景画布 -->
+    <canvas id="artisticBackground"></canvas>
+    
+    <!-- 意境调节器 -->
+    <div class="mood-controller-container">
+        <div class="mood-controller">
+            <div class="controller-outer" id="timeRing">
+                <div class="ring-label">辰 · 昏</div>
+                <div class="time-marker">
+                    <div class="marker-dot" data-time="dawn">晨</div>
+                    <div class="marker-dot" data-time="noon">昼</div>
+                    <div class="marker-dot" data-time="dusk">昏</div>
+                    <div class="marker-dot" data-time="night">夜</div>
+                </div>
+            </div>
+            <div class="controller-inner" id="weatherRing">
+                <div class="ring-label">霁 · 雪</div>
+                <div class="weather-icon">
+                    <i class="fas fa-sun" data-weather="clear"></i>
+                    <i class="fas fa-cloud" data-weather="cloudy"></i>
+                    <i class="fas fa-cloud-rain" data-weather="rain"></i>
+                    <i class="fas fa-snowflake" data-weather="snow"></i>
+                </div>
+            </div>
+            <div class="controller-center">
+                <i class="fas fa-shapes"></i>
+            </div>
+        </div>
+        <div class="mood-display">
+            <span id="currentMood">意境：艺术形式</span>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">
+                <span class="logo-icon">🪐</span>
+                <span class="logo-text">不 被 定 义 的 美</span>
+            </a>
+            
+            <div class="nav-search">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="globalSearch" placeholder="搜索艺术形式、美学概念..." autocomplete="off">
+                    <div class="search-dropdown" id="searchResults"></div>
+                </div>
+                <div class="quick-tags">
+                    <span class="tag" data-tag="抽象">#抽象</span>
+                    <span class="tag" data-tag="叙事">#叙事</span>
+                    <span class="tag" data-tag="互动">#互动</span>
+                    <span class="tag" data-tag="观念">#观念</span>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="../../index.html"><i class="fas fa-home"></i> 主页</a></li>
+                <li class="nav-dropdown">
+                    <a href="../medium/index.html"><i class="fas fa-paint-brush"></i> 艺术载体</a>
+                    <div class="dropdown-content">
+                        <a href="../medium/canvas.html">画布与颜料</a>
+                        <a href="../medium/digital.html">数字像素</a>
+                        <a href="../medium/body.html">身体与空间</a>
+                        <a href="../medium/sound.html">声音与波动</a>
+                    </div>
+                </li>
+                <li class="nav-dropdown nav-active">
+                    <a href="index.html"><i class="fas fa-shapes"></i> 艺术形式</a>
+                    <div class="dropdown-content">
+                        <a href="abstract.html">抽象</a>
+                        <a href="narrative.html">叙事</a>
+                        <a href="interactive.html">互动</a>
+                        <a href="conceptual.html">观念</a>
+                    </div>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="../history/index.html"><i class="fas fa-history"></i> 历史脉络</a>
+                    <div class="dropdown-content">
+                        <a href="../history/ancient.html">古典时期</a>
+                        <a href="../history/renaissance.html">文艺复兴</a>
+                        <a href="../history/modern.html">现代主义</a>
+                        <a href="../history/contemporary.html">当代实验</a>
+                    </div>
+                </li>
+                <li><a href="#contribute"><i class="fas fa-plus-circle"></i> 参与定义</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 艺术形式分类主页内容 -->
+    <section class="category-homepage">
+        <div class="category-intro">
+            <h1 class="category-title">艺术形式分类</h1>
+            <p class="category-description">
+                从抽象到观念，从叙事到互动。艺术形式是美的语言结构，是情感的组织方式。
+                在这里，形式不是框架，而是流动的边界。每一种形式都是一个入口，通向未被定义的美学空间。
+            </p>
+            <div class="form-stats" style="justify-content:center;margin-top:var(--space-lg);border:none;">
+                <span style="margin:0 var(--space-md);"><i class="fas fa-shapes"></i> 4种主要形式</span>
+                <span style="margin:0 var(--space-md);"><i class="fas fa-tags"></i> 89种美学标签</span>
+                <span style="margin:0 var(--space-md);"><i class="fas fa-comments"></i> 512条形式讨论</span>
+            </div>
+        </div>
+        
+        <!-- 形式分类网格 -->
+        <div class="form-categories-grid">
+            <a href="abstract.html" class="form-category-card abstract">
+                <div class="form-icon">🌀</div>
+                <h3>抽象形式</h3>
+                <p>剥离具象，直达本质。色彩、线条、形状的自主表达，形式本身就是内容。</p>
+                <div class="form-stats">
+                    <span><i class="fas fa-palette"></i> 42位艺术家</span>
+                    <span><i class="fas fa-image"></i> 156件作品</span>
+                </div>
+            </a>
+            
+            <a href="narrative.html" class="form-category-card narrative">
+                <div class="form-icon">📖</div>
+                <h3>叙事形式</h3>
+                <p>故事中的视觉语言，时间在空间中的展开。观看即是阅读，图像在诉说。</p>
+                <div class="form-stats">
+                    <span><i class="fas fa-book"></i> 38位叙事者</span>
+                    <span><i class="fas fa-image"></i> 128件作品</span>
+                </div>
+            </a>
+            
+            <a href="interactive.html" class="form-category-card interactive">
+                <div class="form-icon">🤝</div>
+                <h3>互动形式</h3>
+                <p>艺术作为对话，观众成为参与者。每一次交互都是作品的再创造。</p>
+                <div class="form-stats">
+                    <span><i class="fas fa-users"></i> 31位互动艺术家</span>
+                    <span><i class="fas fa-hand-pointer"></i> 87件互动作品</span>
+                </div>
+            </a>
+            
+            <a href="conceptual.html" class="form-category-card conceptual">
+                <div class="form-icon">💡</div>
+                <h3>观念形式</h3>
+                <p>想法先于形式，概念即是艺术。思想的具象化，哲学的可视化。</p>
+                <div class="form-stats">
+                    <span><i class="fas fa-lightbulb"></i> 29位观念艺术家</span>
+                    <span><i class="fas fa-brain"></i> 103件观念作品</span>
+                </div>
+            </a>
+        </div>
+        
+        <!-- 艺术形式时间轴 -->
+        <div class="form-timeline">
+            <h2 class="timeline-title"><i class="fas fa-history"></i> 艺术形式发展脉络</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>古典时期</h3>
+                        <p>形式服务于主题，叙事为主导，追求理想化的美与和谐的比例。</p>
+                        <span class="timeline-date">公元前</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>文艺复兴</h3>
+                        <p>透视法的发现，科学观察与人文主义结合，形式开始获得自主性。</p>
+                        <span class="timeline-date">14-17世纪</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>现代主义</h3>
+                        <p>形式的解放，抽象艺术的兴起。艺术开始关注自身的形式语言。</p>
+                        <span class="timeline-date">19-20世纪</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>当代艺术</h3>
+                        <p>形式的消解与重构，观念艺术、互动艺术、跨媒介形式的出现。</p>
+                        <span class="timeline-date">20世纪至今</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 标签云 -->
+        <div class="tag-cloud-section">
+            <h2 style="text-align:center;margin-bottom:var(--space-lg);color:var(--color-primary);">
+                <i class="fas fa-cloud"></i> 艺术形式标签云
+            </h2>
+            <div class="tag-cloud" id="formTagCloud">
+                <!-- 标签将通过JavaScript动态生成 -->
+                <span class="cloud-tag" style="--i:1;">#抽象表现主义</span>
+                <span class="cloud-tag" style="--i:2;">#极简主义</span>
+                <span class="cloud-tag" style="--i:3;">#超现实主义</span>
+                <span class="cloud-tag" style="--i:4;">#叙事绘画</span>
+                <span class="cloud-tag" style="--i:5;">#互动装置</span>
+                <span class="cloud-tag" style="--i:6;">#观念艺术</span>
+                <span class="cloud-tag" style="--i:7;">#后现代</span>
+                <span class="cloud-tag" style="--i:8;">#解构</span>
+                <span class="cloud-tag" style="--i:9;">#拼贴</span>
+                <span class="cloud-tag" style="--i:10;">#行为艺术</span>
+            </div>
+        </div>
+        
+        <!-- "不被定义"投稿板块 -->
+        <section id="contribute" class="undefined-section" style="margin-top:var(--space-xl);">
+            <div class="container">
+                <div class="undefined-header">
+                    <h2><i class="fas fa-seedling"></i> 定义新的艺术形式</h2>
+                    <p>如果你创造了全新的艺术形式，或对现有形式有突破性诠释，请在此分享</p>
+                </div>
+                
+                <div class="contribute-form">
+                    <div class="form-group">
+                        <input type="text" id="newFormName" placeholder="为你的新艺术形式命名..." maxlength="50">
+                        <div class="char-count"><span id="formNameCount">0</span>/50</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea id="newFormDesc" placeholder="描述你的艺术形式：核心理念、表现方式、美学特点..." rows="4" maxlength="500"></textarea>
+                        <div class="char-count"><span id="formDescCount">0</span>/500</div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <select id="formCategory">
+                                <option value="">基于哪种现有形式？</option>
+                                <option value="抽象">抽象形式</option>
+                                <option value="叙事">叙事形式</option>
+                                <option value="互动">互动形式</option>
+                                <option value="观念">观念形式</option>
+                                <option value="混合">混合形式</option>
+                                <option value="全新">完全创新</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group tag-input-container">
+                            <div class="tag-input" id="formTagInput">
+                                <input type="text" id="newFormTag" placeholder="创建形式标签（回车添加）">
+                            </div>
+                            <div class="tag-preview" id="formTagPreview"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button class="btn-secondary" id="clearNewForm">
+                            <i class="fas fa-eraser"></i> 清空
+                        </button>
+                        <button class="btn-primary" id="submitNewForm">
+                            <i class="fas fa-plus-circle"></i> 提交新艺术形式
+                        </button>
+                    </div>
+                    
+                    <div class="user-space-link">
+                        <p>你的新形式将保存在：<code id="newFormPath">user_[your_id]/new_forms/</code></p>
+                        <a href="#" class="view-space-btn">查看我定义的艺术形式 →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">🪐</div>
+                    <h3>不被定义的美</h3>
+                    <p class="footer-tagline">形式 · 结构 · 创新</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>形式探索</h4>
+                        <a href="abstract.html">抽象形式</a>
+                        <a href="narrative.html">叙事形式</a>
+                        <a href="interactive.html">互动形式</a>
+                        <a href="conceptual.html">观念形式</a>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>我的空间</h4>
+                        <a href="#" id="myFormContributions">我的形式探索</a>
+                        <a href="#" id="myFormTags">我的形式标签</a>
+                        <a href="#" id="myFormCollections">收藏的形式</a>
+                        <a href="#" id="myFormSettings">形式设置</a>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>联系与分享</h4>
+                        <div class="contact-info">
+                            <p><i class="fas fa-phone"></i> 13377886896</p>
+                            <p><i class="fas fa-envelope"></i> 3114228696@qq.com</p>
+                            <p><i class="fas fa-map-marker-alt"></i> 艺术形式空间</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-external">
+                    <h4>我的其他空间</h4>
+                    <div class="external-links">
+                        <a href="https://yohayi.github.io/-history/" target="_blank" class="external-link">
+                            <i class="fas fa-code"></i> 信技化生-技术交流
+                        </a>
+                        <a href="https://yohayi.github.io/jinghongzhai--/" target="_blank" class="external-link">
+                            <i class="fas fa-pagoda"></i> "惊鸿斋"官方网站
+                        </a>
+                        <a href="https://yohayi.github.io/my-personal-edu-website/" target="_blank" class="external-link">
+                            <i class="fas fa-graduation-cap"></i> 杭州市教育总结
+                        </a>
+                        <a href="https://yohayi.github.io/2026--/index.html" target="_blank" class="external-link">
+                            <i class="fas fa-chart-line"></i> 教育数据与交流
+                        </a>
+                        <a href="https://yohayi.github.io/geometry-string-map/" target="_blank" class="external-link">
+                            <i class="fas fa-atom"></i> 几何弦理论课后交流
+                        </a>
+                        <a href="https://yohayi.github.io/BDCG---/" target="_blank" class="external-link">
+                            <i class="fas fa-gamepad"></i> BDCG游戏技术与美术
+                        </a>
+                        <a href="https://yohayi.github.io/yohayi-/" target="_blank" class="external-link">
+                            <i class="fas fa-user"></i> 游海洋个人网站
+                        </a>
+                        <a href="https://yohayi.github.io/-AI-/" target="_blank" class="external-link">
+                            <i class="fas fa-brain"></i> 流式AI监控
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-meta">
+                    <p>形式数据：<span id="formStats">4种形式 · 89个标签</span></p>
+                    <p>最后更新：<span id="lastUpdate">今天</span></p>
+                </div>
+                
+                <div class="footer-copyright">
+                    <p>© <span id="currentYear"></span> 不被定义的美 | 形式是流动的，美是变化的</p>
+                    <p class="footer-note">艺术形式分类采用开放式架构，鼓励创新与跨界</p>
+                </div>
+                
+                <div class="footer-tools">
+                    <button class="tool-btn" id="exportFormData">
+                        <i class="fas fa-download"></i> 导出形式数据
+                    </button>
+                    <button class="tool-btn" id="randomForm">
+                        <i class="fas fa-random"></i> 随机形式探索
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript 文件 -->
+    <script src="../../script.js"></script>
+    <script src="../../意境调节器.js"></script>
+    <script src="../../动态背景.js"></script>
+    
+    <!-- 艺术形式分类主页专用脚本 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 设置当前年份
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // 标签云交互
+            const tagCloud = document.getElementById('formTagCloud');
+            if (tagCloud) {
+                // 点击标签跳转到对应形式页面
+                tagCloud.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('cloud-tag')) {
+                        const tagText = e.target.textContent.replace('#', '');
+                        const searchInput = document.getElementById('globalSearch');
+                        if (searchInput) {
+                            searchInput.value = `#${tagText}`;
+                            searchInput.dispatchEvent(new Event('input'));
+                            searchInput.focus();
+                        }
+                    }
+                });
+            }
+            
+            // 新艺术形式投稿
+            const newFormName = document.getElementById('newFormName');
+            const newFormDesc = document.getElementById('newFormDesc');
+            const formNameCount = document.getElementById('formNameCount');
+            const formDescCount = document.getElementById('formDescCount');
+            
+            if (newFormName && formNameCount) {
+                newFormName.addEventListener('input', () => {
+                    formNameCount.textContent = newFormName.value.length;
+                });
+            }
+            
+            if (newFormDesc && formDescCount) {
+                newFormDesc.addEventListener('input', () => {
+                    formDescCount.textContent = newFormDesc.value.length;
+                });
+            }
+            
+            // 新形式标签输入
+            const newFormTagInput = document.getElementById('newFormTag');
+            const formTagPreview = document.getElementById('formTagPreview');
+            let newFormTags = [];
+            
+            if (newFormTagInput) {
+                newFormTagInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' && this.value.trim()) {
+                        const tag = this.value.trim();
+                        if (!newFormTags.includes(tag)) {
+                            newFormTags.push(tag);
+                            updateFormTagPreview();
+                        }
+                        this.value = '';
+                        e.preventDefault();
+                    }
+                });
+            }
+            
+            function updateFormTagPreview() {
+                if (!formTagPreview) return;
+                
+                formTagPreview.innerHTML = newFormTags.map(tag => `
+                    <span class="preview-tag">
+                        ${tag}
+                        <button type="button" class="remove-tag" data-tag="${tag}">×</button>
+                    </span>
+                `).join('');
+                
+                // 移除标签事件
+                document.querySelectorAll('.remove-tag').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const tagToRemove = this.dataset.tag;
+                        newFormTags = newFormTags.filter(t => t !== tagToRemove);
+                        updateFormTagPreview();
+                    });
+                });
+            }
+            
+            // 清空新形式表单
+            const clearNewFormBtn = document.getElementById('clearNewForm');
+            if (clearNewFormBtn) {
+                clearNewFormBtn.addEventListener('click', function() {
+                    if (newFormName) newFormName.value = '';
+                    if (newFormDesc) newFormDesc.value = '';
+                    if (newFormTagInput) newFormTagInput.value = '';
+                    newFormTags = [];
+                    if (formNameCount) formNameCount.textContent = '0';
+                    if (formDescCount) formDescCount.textContent = '0';
+                    updateFormTagPreview();
+                });
+            }
+            
+            // 提交新艺术形式
+            const submitNewFormBtn = document.getElementById('submitNewForm');
+            if (submitNewFormBtn) {
+                submitNewFormBtn.addEventListener('click', function() {
+                    const formName = newFormName ? newFormName.value.trim() : '';
+                    const formDesc = newFormDesc ? newFormDesc.value.trim() : '';
+                    
+                    if (!formName || !formDesc) {
+                        alert('请填写形式名称和描述');
+                        return;
+                    }
+                    
+                    // 模拟提交
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 提交中...';
+                    this.disabled = true;
+                    
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fas fa-plus-circle"></i> 提交新艺术形式';
+                        this.disabled = false;
+                        
+                        alert(`新艺术形式"${formName}"已提交审核！`);
+                        
+                        // 清空表单
+                        if (clearNewFormBtn) clearNewFormBtn.click();
+                    }, 1500);
+                });
+            }
+            
+            // 随机形式探索
+            const randomFormBtn = document.getElementById('randomForm');
+            if (randomFormBtn) {
+                randomFormBtn.addEventListener('click', function() {
+                    const forms = ['abstract', 'narrative', 'interactive', 'conceptual'];
+                    const randomForm = forms[Math.floor(Math.random() * forms.length)];
+                    window.location.href = `${randomForm}.html`;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
