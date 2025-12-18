@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="day-clear">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>艺术载体分类 | 不被定义的美</title>
+    
+    <!-- 样式文件 -->
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../意境调节器.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@300;400;700;900&family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
+    
+    <!-- 载体分类主页专用样式 -->
+    <style>
+        .medium-homepage {
+            padding: var(--space-xl) var(--space-md);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .medium-intro {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+            padding: var(--space-xl);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        
+        .medium-title {
+            font-size: 3.5rem;
+            font-family: 'Ma Shan Zheng', cursive;
+            margin-bottom: var(--space-sm);
+            background: linear-gradient(135deg, #8a6dae, #ff9a8b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .medium-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        /* 媒介分类网格 */
+        .medium-categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin: var(--space-xl) 0;
+        }
+        
+        .medium-category-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            text-decoration: none;
+            color: var(--text-primary);
+            box-shadow: var(--shadow-elevated);
+            transition: var(--transition-bounce);
+            border-top: 5px solid;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .medium-category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: currentColor;
+            opacity: 0.3;
+        }
+        
+        .medium-category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .medium-category-card.canvas { border-color: #ff9a8b; color: #ff9a8b; }
+        .medium-category-card.digital { border-color: #4ecdc4; color: #4ecdc4; }
+        .medium-category-card.body { border-color: #a18cd1; color: #a18cd1; }
+        .medium-category-card.sound { border-color: #96ceb4; color: #96ceb4; }
+        
+        .medium-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+        }
+        
+        .medium-category-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .medium-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-md);
+            padding-top: var(--space-sm);
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        /* 媒介时间线 */
+        .medium-timeline {
+            margin: var(--space-xl) 0;
+            padding: var(--space-xl);
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: var(--radius-lg);
+        }
+        
+        .timeline-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .medium-timeline-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            height: 200px;
+        }
+        
+        .medium-timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                #ff9a8b, #4ecdc4, #a18cd1, #96ceb4);
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+        
+        .timeline-era {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 20%;
+        }
+        
+        .era-dot {
+            width: 30px;
+            height: 30px;
+            background: white;
+            border: 4px solid;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            transition: var(--transition-smooth);
+        }
+        
+        .era-dot:hover {
+            transform: scale(1.3);
+            box-shadow: 0 0 20px currentColor;
+        }
+        
+        .era-dot.ancient { border-color: #ff9a8b; }
+        .era-dot.renaissance { border-color: #8a6dae; }
+        .era-dot.modern { border-color: #4ecdc4; }
+        .era-dot.contemporary { border-color: #96ceb4; }
+        
+        .era-name {
+            font-weight: bold;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+        
+        .era-example {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        /* 媒介比较表 */
+        .medium-comparison {
+            margin: var(--space-xl) 0;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: var(--space-lg);
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: white;
+            padding: var(--space-md);
+            text-align: left;
+        }
+        
+        .comparison-table td {
+            padding: var(--space-md);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table tr:hover {
+            background: rgba(var(--color-primary-rgb), 0.05);
+        }
+        
+        .medium-feature {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(var(--color-primary-rgb), 0.1);
+            border-radius: var(--radius-full);
+            margin: 2px;
+            font-size: 0.9rem;
+        }
+        
+        /* 媒介融合展示 */
+        .medium-fusion {
+            margin: var(--space-xl) 0;
+            padding: var(--space-xl);
+            background: linear-gradient(135deg, rgba(138, 109, 174, 0.1), rgba(78, 205, 196, 0.1));
+            border-radius: var(--radius-lg);
+            text-align: center;
+        }
+        
+        .fusion-title {
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .fusion-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
+        }
+        
+        .fusion-example {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-elevated);
+        }
+    </style>
+</head>
+<body>
+    <!-- 动态背景画布 -->
+    <canvas id="artisticBackground"></canvas>
+    
+    <!-- 意境调节器 -->
+    <div class="mood-controller-container">
+        <div class="mood-controller">
+            <div class="controller-outer" id="timeRing">
+                <div class="ring-label">辰 · 昏</div>
+                <div class="time-marker">
+                    <div class="marker-dot" data-time="dawn">晨</div>
+                    <div class="marker-dot" data-time="noon">昼</div>
+                    <div class="marker-dot" data-time="dusk">昏</div>
+                    <div class="marker-dot" data-time="night">夜</div>
+                </div>
+            </div>
+            <div class="controller-inner" id="weatherRing">
+                <div class="ring-label">霁 · 雪</div>
+                <div class="weather-icon">
+                    <i class="fas fa-sun" data-weather="clear"></i>
+                    <i class="fas fa-cloud" data-weather="cloudy"></i>
+                    <i class="fas fa-cloud-rain" data-weather="rain"></i>
+                    <i class="fas fa-snowflake" data-weather="snow"></i>
+                </div>
+            </div>
+            <div class="controller-center">
+                <i class="fas fa-paint-brush"></i>
+            </div>
+        </div>
+        <div class="mood-display">
+            <span id="currentMood">意境：艺术载体</span>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">
+                <span class="logo-icon">🪐</span>
+                <span class="logo-text">不 被 定 义 的 美</span>
+            </a>
+            
+            <div class="nav-search">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="globalSearch" placeholder="搜索艺术载体、媒介类型..." autocomplete="off">
+                    <div class="search-dropdown" id="searchResults"></div>
+                </div>
+                <div class="quick-tags">
+                    <span class="tag" data-tag="传统媒介">#传统媒介</span>
+                    <span class="tag" data-tag="数字艺术">#数字艺术</span>
+                    <span class="tag" data-tag="身体艺术">#身体艺术</span>
+                    <span class="tag" data-tag="声音艺术">#声音艺术</span>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="../../index.html"><i class="fas fa-home"></i> 主页</a></li>
+                <li class="nav-dropdown nav-active">
+                    <a href="index.html"><i class="fas fa-paint-brush"></i> 艺术载体</a>
+                    <div class="dropdown-content">
+                        <a href="canvas.html">画布与颜料</a>
+                        <a href="digital.html">数字像素</a>
+                        <a href="body.html">身体与空间</a>
+                        <a href="sound.html">声音与波动</a>
+                    </div>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="../form/index.html"><i class="fas fa-shapes"></i> 艺术形式</a>
+                    <div class="dropdown-content">
+                        <a href="../form/abstract.html">抽象</a>
+                        <a href="../form/narrative.html">叙事</a>
+                        <a href="../form/interactive.html">互动</a>
+                        <a href="../form/conceptual.html">观念</a>
+                    </div>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="../history/index.html"><i class="fas fa-history"></i> 历史脉络</a>
+                    <div class="dropdown-content">
+                        <a href="../history/ancient.html">古典时期</a>
+                        <a href="../history/renaissance.html">文艺复兴</a>
+                        <a href="../history/modern.html">现代主义</a>
+                        <a href="../history/contemporary.html">当代实验</a>
+                    </div>
+                </li>
+                <li><a href="#fusion"><i class="fas fa-plus-circle"></i> 媒介融合</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 艺术载体分类主页内容 -->
+    <section class="medium-homepage">
+        <div class="medium-intro">
+            <h1 class="medium-title">艺术载体分类</h1>
+            <p class="medium-description">
+                从传统的画布颜料到数字的像素代码，从身体的舞蹈到声音的波动。
+                载体不是容器，而是表达本身。每一种媒介都有其独特的语言和可能性。
+                在这里，探索不同载体如何塑造美的感知，如何定义艺术的可能。
+            </p>
+            <div class="medium-stats" style="justify-content:center;margin-top:var(--space-lg);border:none;">
+                <span style="margin:0 var(--space-md);"><i class="fas fa-paint-brush"></i> 4种主要载体</span>
+                <span style="margin:0 var(--space-md);"><i class="fas fa-tools"></i> 28种媒介技术</span>
+                <span style="margin:0 var(--space-md);"><i class="fas fa-users"></i> 412位媒介艺术家</span>
+            </div>
+        </div>
+        
+        <!-- 载体分类网格 -->
+        <div class="medium-categories-grid">
+            <a href="canvas.html" class="medium-category-card canvas">
+                <div class="medium-icon">🖼️</div>
+                <h3>画布与颜料</h3>
+                <p>从水墨的流淌到油彩的堆叠，传统媒介的现代诗意。画布是时间的容器，颜料是情感的轨迹。</p>
+                <div class="medium-stats">
+                    <span><i class="fas fa-palette"></i> 14种媒介类型</span>
+                    <span><i class="fas fa-image"></i> 356件作品</span>
+                </div>
+            </a>
+            
+            <a href="digital.html" class="medium-category-card digital">
+                <div class="medium-icon">💻</div>
+                <h3>数字像素</h3>
+                <p>虚拟世界中的色彩构成，代码中的诗意，算法生成的美学。像素作为最小单元构建无限可能。</p>
+                <div class="medium-stats">
+                    <span><i class="fas fa-code"></i> 8种数字技术</span>
+                    <span><i class="fas fa-image"></i> 214件作品</span>
+                </div>
+            </a>
+            
+            <a href="body.html" class="medium-category-card body">
+                <div class="medium-icon">🕺</div>
+                <h3>身体与空间</h3>
+                <p>身体即画布，空间即媒介。行动中的美学，在场中的表达。身体在空间中书写临时性的诗。</p>
+                <div class="medium-stats">
+                    <span><i class="fas fa-user"></i> 6种身体形式</span>
+                    <span><i class="fas fa-image"></i> 143件作品</span>
+                </div>
+            </a>
+            
+            <a href="sound.html" class="medium-category-card sound">
+                <div class="medium-icon">🎵</div>
+                <h3>声音与波动</h3>
+                <p>空气中振动的美学，时间中展开的诗。声音是看不见的雕塑，波动是摸不着的色彩。</p>
+                <div class="medium-stats">
+                    <span><i class="fas fa-volume-up"></i> 7种声音形式</span>
+                    <span><i class="fas fa-image"></i> 178件作品</span>
+                </div>
+            </a>
+        </div>
+        
+        <!-- 媒介时间线 -->
+        <div class="medium-timeline">
+            <h2 class="timeline-title"><i class="fas fa-history"></i> 艺术载体发展脉络</h2>
+            <div class="medium-timeline-container">
+                <div class="timeline-era">
+                    <div class="era-dot ancient"></div>
+                    <div class="era-name">古典时期</div>
+                    <div class="era-example">壁画、雕塑、陶器</div>
+                </div>
+                <div class="timeline-era">
+                    <div class="era-dot renaissance"></div>
+                    <div class="era-name">文艺复兴</div>
+                    <div class="era-example">油画、湿壁画、版画</div>
+                </div>
+                <div class="timeline-era">
+                    <div class="era-dot modern"></div>
+                    <div class="era-name">现代主义</div>
+                    <div class="era-example">摄影、电影、拼贴</div>
+                </div>
+                <div class="timeline-era">
+                    <div class="era-dot contemporary"></div>
+                    <div class="era-name">当代实验</div>
+                    <div class="era-example">数字艺术、装置、生物艺术</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 媒介比较表 -->
+        <div class="medium-comparison">
+            <h2 style="text-align:center;color:var(--color-primary);margin-bottom:var(--space-lg);">
+                <i class="fas fa-balance-scale"></i> 艺术载体特性比较
+            </h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>载体类型</th>
+                        <th>主要媒介</th>
+                        <th>时间特性</th>
+                        <th>空间特性</th>
+                        <th>互动方式</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>画布与颜料</strong></td>
+                        <td>水墨、油画、丙烯、水彩</td>
+                        <td>静态、持久、可保存</td>
+                        <td>二维平面、有限边界</td>
+                        <td>视觉凝视、静观</td>
+                    </tr>
+                    <tr>
+                        <td><strong>数字像素</strong></td>
+                        <td>算法、代码、屏幕、投影</td>
+                        <td>动态、可变、实时生成</td>
+                        <td>虚拟空间、无限扩展</td>
+                        <td>交互、操控、参与</td>
+                    </tr>
+                    <tr>
+                        <td><strong>身体与空间</strong></td>
+                        <td>身体、动作、装置、环境</td>
+                        <td>临时性、在场性、过程性</td>
+                        <td>三维空间、场域特定</td>
+                        <td>体验、参与、对话</td>
+                    </tr>
+                    <tr>
+                        <td><strong>声音与波动</strong></td>
+                        <td>声音、音乐、噪音、寂静</td>
+                        <td>时间性、流逝性、不可见</td>
+                        <td>弥漫空间、无固定形态</td>
+                        <td>听觉体验、沉浸</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- 媒介融合展示 -->
+        <section id="fusion" class="medium-fusion">
+            <h2 class="fusion-title">媒介融合实验</h2>
+            <p style="max-width:800px;margin:0 auto;color:var(--text-secondary);line-height:1.8;">
+                当代艺术的重要趋势是媒介的跨界与融合。当画布遇见数字，当身体遇见声音，
+                新的美学可能性在边界处诞生。探索这些融合实验如何挑战传统的载体定义。
+            </p>
+            
+            <div class="fusion-examples">
+                <div class="fusion-example">
+                    <h4><i class="fas fa-brush"></i> 数字水墨</h4>
+                    <p>传统水墨的笔触与数字算法的结合，在屏幕上重现墨的流动与渗透。</p>
+                    <div class="medium-feature">水墨</div>
+                    <div class="medium-feature">算法</div>
+                    <div class="medium-feature">交互</div>
+                </div>
+                
+                <div class="fusion-example">
+                    <h4><i class="fas fa-user"></i> 声音身体装置</h4>
+                    <p>身体动作触发声音变化，声音反馈引导身体动作的互动循环。</p>
+                    <div class="medium-feature">身体</div>
+                    <div class="medium-feature">声音</div>
+                    <div class="medium-feature">传感器</div>
+                </div>
+                
+                <div class="fusion-example">
+                    <h4><i class="fas fa-vr-cardboard"></i> 虚拟现实绘画</h4>
+                    <p>在虚拟空间中用三维笔触绘画，突破画布平面的限制。</p>
+                    <div class="medium-feature">VR</div>
+                    <div class="medium-feature">三维绘画</div>
+                    <div class="medium-feature">沉浸式</div>
+                </div>
+            </div>
+            
+            <!-- 媒介融合投稿 -->
+            <div class="contribute-form" style="margin-top:var(--space-xl);max-width:800px;margin-left:auto;margin-right:auto;">
+                <div class="undefined-header">
+                    <h3><i class="fas fa-seedling"></i> 提交你的媒介融合实验</h3>
+                    <p>如果你探索了不同载体的融合，或创造了新的媒介形式，请在此分享</p>
+                </div>
+                
+                <div class="form-group">
+                    <input type="text" id="fusionTitle" placeholder="为你的融合实验命名..." maxlength="50">
+                    <div class="char-count"><span id="fusionTitleCount">0</span>/50</div>
+                </div>
+                
+                <div class="form-group">
+                    <textarea id="fusionDesc" placeholder="描述你的融合实验：结合了哪些载体？创造了什么新可能？..." rows="4" maxlength="500"></textarea>
+                    <div class="char-count"><span id="fusionDescCount">0</span>/500</div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <select id="fusionMedia" multiple style="height:120px;">
+                            <option value="canvas">画布与颜料</option>
+                            <option value="digital">数字像素</option>
+                            <option value="body">身体与空间</option>
+                            <option value="sound">声音与波动</option>
+                            <option value="other">其他载体</option>
+                        </select>
+                        <small style="color:var(--text-secondary);">按住Ctrl/Cmd选择多个</small>
+                    </div>
+                    
+                    <div class="form-group tag-input-container">
+                        <div class="tag-input" id="fusionTagInput">
+                            <input type="text" id="newFusionTag" placeholder="创建融合标签（回车添加）">
+                        </div>
+                        <div class="tag-preview" id="fusionTagPreview"></div>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button class="btn-secondary" id="clearFusion">
+                        <i class="fas fa-eraser"></i> 清空
+                    </button>
+                    <button class="btn-primary" id="submitFusion">
+                        <i class="fas fa-plus-circle"></i> 提交融合实验
+                    </button>
+                </div>
+                
+                <div class="user-space-link">
+                    <p>你的融合实验将保存在：<code id="fusionPath">user_[your_id]/fusion_experiments/</code></p>
+                    <a href="#" class="view-space-btn">查看我的媒介融合空间 →</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 跨载体搜索 -->
+        <section class="undefined-section" style="margin-top:var(--space-xl);">
+            <div class="container">
+                <div class="undefined-header">
+                    <h2><i class="fas fa-search-plus"></i> 跨载体搜索</h2>
+                    <p>在所有艺术载体中搜索相关作品、艺术家或概念</p>
+                </div>
+                
+                <div class="search-container" style="max-width:600px;margin:0 auto;">
+                    <div class="search-filter">
+                        <div class="filter-options">
+                            <label style="margin-right:var(--space-sm);">
+                                <input type="checkbox" name="mediumFilter" value="canvas" checked> 画布与颜料
+                            </label>
+                            <label style="margin-right:var(--space-sm);">
+                                <input type="checkbox" name="mediumFilter" value="digital" checked> 数字像素
+                            </label>
+                            <label style="margin-right:var(--space-sm);">
+                                <input type="checkbox" name="mediumFilter" value="body" checked> 身体与空间
+                            </label>
+                            <label>
+                                <input type="checkbox" name="mediumFilter" value="sound" checked> 声音与波动
+                            </label>
+                        </div>
+                        
+                        <div style="position:relative;margin-top:var(--space-md);">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" id="crossMediumSearch" placeholder="搜索所有艺术载体..." style="width:100%;">
+                            <button id="crossSearchBtn" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:var(--color-primary);color:white;border:none;padding:8px 16px;border-radius:var(--radius-md);cursor:pointer;">
+                                搜索
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="crossSearchResults" style="margin-top:var(--space-md);display:none;">
+                        <!-- 搜索结果将显示在这里 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">🪐</div>
+                    <h3>不被定义的美</h3>
+                    <p class="footer-tagline">载体 · 媒介 · 融合</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>载体探索</h4>
+                        <a href="canvas.html">画布与颜料</a>
+                        <a href="digital.html">数字像素</a>
+                        <a href="body.html">身体与空间</a>
+                        <a href="sound.html">声音与波动</a>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>我的空间</h4>
+                        <a href="#" id="myMediumContributions">我的载体探索</a>
+                        <a href="#" id="myMediumTags">我的媒介标签</a>
+                        <a href="#" id="myMediumCollections">收藏的载体作品</a>
+                        <a href="#" id="myMediumSettings">载体设置</a>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>联系与分享</h4>
+                        <div class="contact-info">
+                            <p><i class="fas fa-phone"></i> 13377886896</p>
+                            <p><i class="fas fa-envelope"></i> 3114228696@qq.com</p>
+                            <p><i class="fas fa-map-marker-alt"></i> 艺术载体空间</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-external">
+                    <h4>我的其他空间</h4>
+                    <div class="external-links">
+                        <a href="https://yohayi.github.io/-history/" target="_blank" class="external-link">
+                            <i class="fas fa-code"></i> 信技化生-技术交流
+                        </a>
+                        <a href="https://yohayi.github.io/jinghongzhai--/" target="_blank" class="external-link">
+                            <i class="fas fa-pagoda"></i> "惊鸿斋"官方网站
+                        </a>
+                        <a href="https://yohayi.github.io/my-personal-edu-website/" target="_blank" class="external-link">
+                            <i class="fas fa-graduation-cap"></i> 杭州市教育总结
+                        </a>
+                        <a href="https://yohayi.github.io/2026--/index.html" target="_blank" class="external-link">
+                            <i class="fas fa-chart-line"></i> 教育数据与交流
+                        </a>
+                        <a href="https://yohayi.github.io/geometry-string-map/" target="_blank" class="external-link">
+                            <i class="fas fa-atom"></i> 几何弦理论课后交流
+                        </a>
+                        <a href="https://yohayi.github.io/BDCG---/" target="_blank" class="external-link">
+                            <i class="fas fa-gamepad"></i> BDCG游戏技术与美术
+                        </a>
+                        <a href="https://yohayi.github.io/yohayi-/" target="_blank" class="external-link">
+                            <i class="fas fa-user"></i> 游海洋个人网站
+                        </a>
+                        <a href="https://yohayi.github.io/-AI-/" target="_blank" class="external-link">
+                            <i class="fas fa-brain"></i> 流式AI监控
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-meta">
+                    <p>载体数据：<span id="mediumStats">4种载体 · 891件作品</span></p>
+                    <p>最后更新：<span id="lastUpdate">今天</span></p>
+                </div>
+                
+                <div class="footer-copyright">
+                    <p>© <span id="currentYear"></span> 不被定义的美 | 载体是语言，不是限制</p>
+                    <p class="footer-note">艺术载体分类采用开放式架构，鼓励媒介创新与跨界</p>
+                </div>
+                
+                <div class="footer-tools">
+                    <button class="tool-btn" id="exportMediumData">
+                        <i class="fas fa-download"></i> 导出载体数据
+                    </button>
+                    <button class="tool-btn" id="randomMedium">
+                        <i class="fas fa-random"></i> 随机载体探索
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript 文件 -->
+    <script src="../../script.js"></script>
+    <script src="../../意境调节器.js"></script>
+    <script src="../../动态背景.js"></script>
+    
+    <!-- 艺术载体分类主页专用脚本 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 设置当前年份
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // 媒介融合投稿功能
+            const fusionTitle = document.getElementById('fusionTitle');
+            const fusionDesc = document.getElementById('fusionDesc');
+            const fusionTitleCount = document.getElementById('fusionTitleCount');
+            const fusionDescCount = document.getElementById('fusionDescCount');
+            const newFusionTagInput = document.getElementById('newFusionTag');
+            const fusionTagPreview = document.getElementById('fusionTagPreview');
+            
+            let fusionTags = [];
+            
+            // 字符计数
+            if (fusionTitle && fusionTitleCount) {
+                fusionTitle.addEventListener('input', () => {
+                    fusionTitleCount.textContent = fusionTitle.value.length;
+                });
+            }
+            
+            if (fusionDesc && fusionDescCount) {
+                fusionDesc.addEventListener('input', () => {
+                    fusionDescCount.textContent = fusionDesc.value.length;
+                });
+            }
+            
+            // 融合标签输入
+            if (newFusionTagInput) {
+                newFusionTagInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' && this.value.trim()) {
+                        const tag = this.value.trim();
+                        if (!fusionTags.includes(tag)) {
+                            fusionTags.push(tag);
+                            updateFusionTagPreview();
+                        }
+                        this.value = '';
+                        e.preventDefault();
+                    }
+                });
+            }
+            
+            function updateFusionTagPreview() {
+                if (!fusionTagPreview) return;
+                
+                fusionTagPreview.innerHTML = fusionTags.map(tag => `
+                    <span class="preview-tag">
+                        ${tag}
+                        <button type="button" class="remove-tag" data-tag="${tag}">×</button>
+                    </span>
+                `).join('');
+                
+                // 移除标签事件
+                document.querySelectorAll('.remove-tag').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const tagToRemove = this.dataset.tag;
+                        fusionTags = fusionTags.filter(t => t !== tagToRemove);
+                        updateFusionTagPreview();
+                    });
+                });
+            }
+            
+            // 清空融合表单
+            const clearFusionBtn = document.getElementById('clearFusion');
+            if (clearFusionBtn) {
+                clearFusionBtn.addEventListener('click', function() {
+                    if (fusionTitle) fusionTitle.value = '';
+                    if (fusionDesc) fusionDesc.value = '';
+                    if (newFusionTagInput) newFusionTagInput.value = '';
+                    fusionTags = [];
+                    if (fusionTitleCount) fusionTitleCount.textContent = '0';
+                    if (fusionDescCount) fusionDescCount.textContent = '0';
+                    
+                    // 清空多选框
+                    const mediaSelect = document.getElementById('fusionMedia');
+                    if (mediaSelect) {
+                        for (let option of mediaSelect.options) {
+                            option.selected = false;
+                        }
+                    }
+                    
+                    updateFusionTagPreview();
+                });
+            }
+            
+            // 提交融合实验
+            const submitFusionBtn = document.getElementById('submitFusion');
+            if (submitFusionBtn) {
+                submitFusionBtn.addEventListener('click', function() {
+                    const title = fusionTitle ? fusionTitle.value.trim() : '';
+                    const desc = fusionDesc ? fusionDesc.value.trim() : '';
+                    const mediaSelect = document.getElementById('fusionMedia');
+                    
+                    if (!title || !desc) {
+                        alert('请填写实验名称和描述');
+                        return;
+                    }
+                    
+                    // 获取选择的媒介
+                    let selectedMedia = [];
+                    if (mediaSelect) {
+                        for (let option of mediaSelect.options) {
+                            if (option.selected) {
+                                selectedMedia.push(option.value);
+                            }
+                        }
+                    }
+                    
+                    if (selectedMedia.length === 0) {
+                        alert('请至少选择一种媒介');
+                        return;
+                    }
+                    
+                    // 模拟提交
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 提交中...';
+                    this.disabled = true;
+                    
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fas fa-plus-circle"></i> 提交融合实验';
+                        this.disabled = false;
+                        
+                        alert(`融合实验"${title}"已提交！\n结合媒介：${selectedMedia.join(', ')}`);
+                        
+                        // 清空表单
+                        if (clearFusionBtn) clearFusionBtn.click();
+                        
+                        // 更新用户空间路径显示
+                        const fusionPath = document.getElementById('fusionPath');
+                        if (fusionPath) {
+                            const userId = localStorage.getItem('userId') || 'user_new';
+                            fusionPath.textContent = `${userId}/fusion_experiments/${Date.now()}/`;
+                        }
+                    }, 1500);
+                });
+            }
+            
+            // 跨载体搜索功能
+            const crossSearchInput = document.getElementById('crossMediumSearch');
+            const crossSearchBtn = document.getElementById('crossSearchBtn');
+            const crossSearchResults = document.getElementById('crossSearchResults');
+            
+            if (crossSearchBtn && crossSearchInput) {
+                crossSearchBtn.addEventListener('click', performCrossSearch);
+                crossSearchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        performCrossSearch();
+                    }
+                });
+            }
+            
+            function performCrossSearch() {
+                const query = crossSearchInput.value.trim();
+                if (!query) {
+                    alert('请输入搜索关键词');
+                    return;
+                }
+                
+                // 获取选中的载体类型
+                const selectedMedia = [];
+                document.querySelectorAll('input[name="mediumFilter"]:checked').forEach(checkbox => {
+                    selectedMedia.push(checkbox.value);
+                });
+                
+                if (selectedMedia.length === 0) {
+                    alert('请至少选择一种载体类型');
+                    return;
+                }
+                
+                // 显示搜索中状态
+                crossSearchResults.style.display = 'block';
+                crossSearchResults.innerHTML = `
+                    <div style="text-align:center;padding:var(--space-lg);">
+                        <div class="loading-spinner"></div>
+                        <p>正在从 ${selectedMedia.length} 种载体中搜索"${query}"...</p>
+                    </div>
+                `;
+                
+                // 模拟搜索（实际应从服务器获取）
+                setTimeout(() => {
+                    const mockResults = [
+                        {
+                            title: '数字水墨实验',
+                            medium: 'canvas,digital',
+                            description: '传统水墨与数字算法的融合',
+                            url: 'canvas.html#digital-ink'
+                        },
+                        {
+                            title: '声音身体互动装置',
+                            medium: 'body,sound',
+                            description: '身体动作触发声音变化的沉浸式体验',
+                            url: 'body.html#sound-body'
+                        },
+                        {
+                            title: '油画与投影融合',
+                            medium: 'canvas,digital',
+                            description: '静态油画与动态投影的对话',
+                            url: 'canvas.html#projection-painting'
+                        }
+                    ];
+                    
+                    // 过滤结果（模拟）
+                    const filteredResults = mockResults.filter(result => {
+                        const resultMedia = result.medium.split(',');
+                        return resultMedia.some(medium => selectedMedia.includes(medium));
+                    });
+                    
+                    // 显示结果
+                    if (filteredResults.length > 0) {
+                        crossSearchResults.innerHTML = `
+                            <h4 style="margin-bottom:var(--space-md);color:var(--color-primary);">
+                                <i class="fas fa-search"></i> 找到 ${filteredResults.length} 个相关结果
+                            </h4>
+                            <div class="search-results-list">
+                                ${filteredResults.map(result => `
+                                    <div class="search-result-item" style="background:white;padding:var(--space-md);border-radius:var(--radius-md);margin-bottom:var(--space-sm);border-left:4px solid var(--color-primary);">
+                                        <h5 style="margin-bottom:var(--space-xs);">${result.title}</h5>
+                                        <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:var(--space-xs);">
+                                            ${result.description}
+                                        </p>
+                                        <div style="display:flex;justify-content:space-between;align-items:center;">
+                                            <span style="font-size:0.8rem;color:var(--text-secondary);">
+                                                涉及载体：${result.medium.replace('canvas','画布与颜料').replace('digital','数字像素').replace('body','身体与空间').replace('sound','声音与波动')}
+                                            </span>
+                                            <a href="${result.url}" style="color:var(--color-primary);font-size:0.9rem;text-decoration:none;">
+                                                查看详情 →
+                                            </a>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `;
+                    } else {
+                        crossSearchResults.innerHTML = `
+                            <div style="text-align:center;padding:var(--space-lg);color:var(--text-secondary);">
+                                <i class="fas fa-search" style="font-size:2rem;margin-bottom:var(--space-sm);"></i>
+                                <p>没有找到相关结果</p>
+                                <p style="font-size:0.9rem;">尝试使用其他关键词或选择更多载体类型</p>
+                            </div>
+                        `;
+                    }
+                }, 1000);
+            }
+            
+            // 随机载体探索
+            const randomMediumBtn = document.getElementById('randomMedium');
+            if (randomMediumBtn) {
+                randomMediumBtn.addEventListener('click', function() {
+                    const mediums = ['canvas', 'digital', 'body', 'sound'];
+                    const randomMedium = mediums[Math.floor(Math.random() * mediums.length)];
+                    window.location.href = `${randomMedium}.html`;
+                });
+            }
+            
+            // 更新统计数据
+            updateMediumStats();
+            
+            // 模拟统计数据更新
+            function updateMediumStats() {
+                const stats = {
+                    totalWorks: 891,
+                    canvasWorks: 356,
+                    digitalWorks: 214,
+                    bodyWorks: 143,
+                    soundWorks: 178
+                };
+                
+                const statsElement = document.getElementById('mediumStats');
+                if (statsElement) {
+                    statsElement.textContent = `4种载体 · ${stats.totalWorks}件作品`;
+                }
+                
+                const lastUpdateElement = document.getElementById('lastUpdate');
+                if (lastUpdateElement) {
+                    lastUpdateElement.textContent = new Date().toLocaleDateString('zh-CN');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
