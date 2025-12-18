@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="day-clear">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>声音与波动 | 不被定义的美 | 艺术载体</title>
+    <!-- 所有样式和脚本链接 -->
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">
+                <span class="logo-icon">🪐</span>
+                <span class="logo-text">不 被 定 义 的 美</span>
+            </a>
+            
+            <div class="nav-search">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="globalSearch" placeholder="搜索声音艺术、音乐实验..." autocomplete="off">
+                    <div class="search-dropdown" id="searchResults"></div>
+                </div>
+                <div class="quick-tags">
+                    <span class="tag" data-tag="声音艺术">#声音艺术</span>
+                    <span class="tag" data-tag="实验音乐">#实验音乐</span>
+                    <span class="tag" data-tag="音景">#音景</span>
+                    <span class="tag" data-tag="声音装置">#声音装置</span>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="../../index.html"><i class="fas fa-home"></i> 主页</a></li>
+                <li class="nav-dropdown nav-active">
+                    <a href="../index.html"><i class="fas fa-paint-brush"></i> 艺术载体</a>
+                    <div class="dropdown-content">
+                        <a href="canvas.html">画布与颜料</a>
+                        <a href="digital.html">数字像素</a>
+                        <a href="body.html">身体与空间</a>
+                        <a href="sound.html">声音与波动</a>
+                    </div>
+                </li>
+                <!-- 其他分类链接 -->
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 声音与波动专属内容 -->
+    <section class="subpage-hero">
+        <div class="category-breadcrumb">
+            <a href="../../index.html" class="breadcrumb-link">主页</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="../index.html" class="breadcrumb-link">艺术载体</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>声音与波动</span>
+        </div>
+        
+        <h1 class="subpage-title">声音与波动</h1>
+        <p class="subpage-subtitle">
+            空气中振动的美学，时间中展开的诗。从噪音到寂静，从旋律到音景。
+            声音是看不见的雕塑，波动是摸不着的色彩。聆听未被定义的声音之美。
+        </p>
+        
+        <div class="category-overview">
+            <div class="overview-card">
+                <h3><i class="fas fa-volume-up"></i> 声音形式</h3>
+                <p>声音艺术、实验音乐、音景、声音装置、声音雕塑、现场录音...</p>
+            </div>
+            
+            <div class="overview-card">
+                <h3><i class="fas fa-wave-square"></i> 波动特性</h3>
+                <p>频率、振幅、音色、节奏、和声、噪音、寂静</p>
+            </div>
+            
+            <div class="overview-card">
+                <h3><i class="fas fa-users"></i> 社区活跃</h3>
+                <p>64位声音艺术家，178件作品，持续聆听中</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品墙部分 -->
+    <section class="works-section">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-music"></i> 声音作品墙</h2>
+                
+                <div class="subpage-search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <!-- 关键：搜索框指向声音与波动案例文件夹 -->
+                    <input type="text" class="subpage-search" id="categorySearch" 
+                           placeholder="在声音与波动中搜索..." data-category="载体-声音与波动">
+                </div>
+            </div>
+            
+            <!-- 作品网格 - 从 assets/cases/载体-声音与波动/ 动态加载 -->
+            <div class="works-grid" id="worksContainer">
+                <div class="work-card">
+                    <div class="work-image">
+                        <div class="work-category">声音装置</div>
+                        <div style="width:100%;height:100%;background:linear-gradient(135deg, #ffecd2, #fcb69f);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;">
+                            正在从 assets/cases/载体-声音与波动/ 加载...
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3>城市音景切片</h3>
+                        <div class="work-author">
+                            <i class="fas fa-user"></i> 城市听者
+                        </div>
+                        <p class="work-desc">
+                            采集城市不同空间的24小时声音，重新组合成声音装置，呈现城市的听觉肖像。
+                        </p>
+                        <div class="work-tags">
+                            <span class="work-tag">声音装置</span>
+                            <span class="work-tag">音景</span>
+                            <span class="work-tag">城市</span>
+                            <span class="work-tag">现场录音</span>
+                        </div>
+                        <div class="work-meta">
+                            <span><i class="fas fa-heart"></i> 51</span>
+                            <span><i class="fas fa-eye"></i> 194</span>
+                            <span>3天前</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="work-card">
+                    <div class="work-image">
+                        <div class="work-category">实验音乐</div>
+                        <div style="width:100%;height:100%;background:linear-gradient(135deg, #84fab0, #8fd3f4);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;">
+                            assets/cases/载体-声音与波动/实验音乐/
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3>算法的旋律</h3>
+                        <div class="work-author">
+                            <i class="fas fa-user"></i> 算法作曲家
+                        </div>
+                        <p class="work-desc">
+                            使用生成算法创作的音乐，每一次播放都是独特的旋律组合，永不重复。
+                        </p>
+                        <div class="work-tags">
+                            <span class="work-tag">实验音乐</span>
+                            <span class="work-tag">算法作曲</span>
+                            <span class="work-tag">生成音乐</span>
+                            <span class="work-tag">电子</span>
+                        </div>
+                        <div class="work-meta">
+                            <span><i class="fas fa-heart"></i> 63</span>
+                            <span><i class="fas fa-eye"></i> 267</span>
+                            <span>1周前</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 不被定义的美板块 -->
+    <section id="contribute" class="undefined-section">
+        <div class="container">
+            <div class="undefined-header">
+                <h2><i class="fas fa-seedling"></i> 不被定义的声音美</h2>
+                <p>在此提交你的声音艺术作品，它将存放在你的独立空间</p>
+            </div>
+            
+            <div class="contribute-form">
+                <div class="form-group">
+                    <input type="text" id="contributeTitle" placeholder="为你的声音作品命名..." maxlength="50">
+                    <div class="char-count"><span id="titleCount">0</span>/50</div>
+                </div>
+                
+                <div class="form-group">
+                    <textarea id="contributeDesc" placeholder="描述你的声音理念、创作过程或听觉体验..." rows="3" maxlength="300"></textarea>
+                    <div class="char-count"><span id="descCount">0</span>/300</div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <!-- 声音与波动专属选项 -->
+                        <select id="contributeMedium">
+                            <option value="">选择声音媒介类型</option>
+                            <option value="声音艺术">声音艺术</option>
+                            <option value="实验音乐">实验音乐</option>
+                            <option value="音景">音景</option>
+                            <option value="声音装置">声音装置</option>
+                            <option value="声音雕塑">声音雕塑</option>
+                            <option value="现场录音">现场录音</option>
+                            <option value="其他">其他声音形式</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group tag-input-container">
+                        <div class="tag-input" id="tagInput">
+                            <input type="text" id="newTag" placeholder="创建你的声音标签（回车添加）">
+                        </div>
+                        <div class="tag-preview" id="tagPreview"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>拖放音频文件/声音频谱图/文档</p>
+                        <input type="file" id="imageUpload" accept="audio/*,image/*,.mp3,.wav,.pdf">
+                        <div class="upload-preview" id="uploadPreview"></div>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button class="btn-secondary" id="clearForm">
+                        <i class="fas fa-eraser"></i> 清空
+                    </button>
+                    <button class="btn-primary" id="submitContribution">
+                        <i class="fas fa-paper-plane"></i> 发布到我的声音空间
+                    </button>
+                </div>
+                
+                <!-- 关键：用户投稿将保存到对应分类的用户空间 -->
+                <div class="user-space-link">
+                    <p>你的作品将保存在：<code id="userSpacePath">user_[your_id]/contributions/载体-声音与波动/</code></p>
+                    <a href="#" class="view-space-btn">查看我的声音艺术空间 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <!-- ... 页脚内容 ... -->
+    </footer>
+
+    <!-- JavaScript 文件 -->
+    <script src="../../script.js"></script>
+    <!-- 子页面专用脚本 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 声音与波动页面特定初始化
+            const searchBox = document.getElementById('categorySearch');
+            if (searchBox) {
+                searchBox.setAttribute('data-category', '载体-声音与波动');
+            }
+            
+            // 更新用户空间路径显示
+            const userSpacePath = document.getElementById('userSpacePath');
+            if (userSpacePath) {
+                const userId = localStorage.getItem('userId') || 'user_new';
+                userSpacePath.textContent = `${userId}/contributions/载体-声音与波动/`;
+            }
+            
+            // 声音与波动分类特定数据加载
+            loadSoundCategoryData();
+        });
+        
+        async function loadSoundCategoryData() {
+            // 从 assets/cases/载体-声音与波动/ 加载数据
+            console.log('正在从 assets/cases/载体-声音与波动/ 加载声音与波动作品...');
+        }
+    </script>
+</body>
+</html>
