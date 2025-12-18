@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="day-clear">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>不被定义的美 | 意境艺术门户</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="意境调节器.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@300;400;700;900&family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 动态意境背景画布 -->
+    <canvas id="artisticBackground"></canvas>
+    
+    <!-- 意境调节器 -->
+    <div class="mood-controller-container">
+        <div class="mood-controller">
+            <div class="controller-outer" id="timeRing">
+                <div class="ring-label">辰 · 昏</div>
+                <div class="time-marker">
+                    <div class="marker-dot" data-time="dawn">晨</div>
+                    <div class="marker-dot" data-time="noon">昼</div>
+                    <div class="marker-dot" data-time="dusk">昏</div>
+                    <div class="marker-dot" data-time="night">夜</div>
+                </div>
+            </div>
+            <div class="controller-inner" id="weatherRing">
+                <div class="ring-label">霁 · 雪</div>
+                <div class="weather-icon">
+                    <i class="fas fa-sun" data-weather="clear"></i>
+                    <i class="fas fa-cloud" data-weather="cloudy"></i>
+                    <i class="fas fa-cloud-rain" data-weather="rain"></i>
+                    <i class="fas fa-snowflake" data-weather="snow"></i>
+                </div>
+            </div>
+            <div class="controller-center">
+                <i class="fas fa-palette"></i>
+            </div>
+        </div>
+        <div class="mood-display">
+            <span id="currentMood">意境：晨曦初晴</span>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">🪐</span>
+                <span class="logo-text">不 被 定 义 的 美</span>
+            </a>
+            
+            <div class="nav-search">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="globalSearch" placeholder="搜索作品、标签或意境..." autocomplete="off">
+                    <div class="search-dropdown" id="searchResults"></div>
+                </div>
+                <div class="quick-tags">
+                    <span class="tag" data-tag="抽象">#抽象</span>
+                    <span class="tag" data-tag="水墨">#水墨</span>
+                    <span class="tag" data-tag="数字">#数字</span>
+                    <span class="tag" data-tag="流动">#流动</span>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-active"><i class="fas fa-home"></i> 意境</a></li>
+                <li class="nav-dropdown">
+                    <a href="#"><i class="fas fa-paint-brush"></i> 艺术载体</a>
+                    <div class="dropdown-content">
+                        <a href="pages/medium/canvas.html">画布与颜料</a>
+                        <a href="pages/medium/digital.html">数字像素</a>
+                        <a href="pages/medium/body.html">身体与空间</a>
+                        <a href="pages/medium/sound.html">声音与波动</a>
+                    </div>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="#"><i class="fas fa-shapes"></i> 艺术形式</a>
+                    <div class="dropdown-content">
+                        <a href="pages/form/abstract.html">抽象</a>
+                        <a href="pages/form/narrative.html">叙事</a>
+                        <a href="pages/form/interactive.html">互动</a>
+                        <a href="pages/form/conceptual.html">观念</a>
+                    </div>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="#"><i class="fas fa-history"></i> 历史脉络</a>
+                    <div class="dropdown-content">
+                        <a href="pages/history/ancient.html">古典时期</a>
+                        <a href="pages/history/renaissance.html">文艺复兴</a>
+                        <a href="pages/history/modern.html">现代主义</a>
+                        <a href="pages/history/contemporary.html">当代实验</a>
+                    </div>
+                </li>
+                <li><a href="#contribute"><i class="fas fa-plus-circle"></i> 参与定义</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-title-container">
+                <h1 class="hero-title">
+                    <span class="title-line">美，是<span class="highlight">不</span></span>
+                    <span class="title-line">被驯服的<span class="highlight">意</span>境</span>
+                    <span class="title-line">与<span class="highlight">诗</span></span>
+                </h1>
+            </div>
+            
+            <div class="hero-subtitle">
+                <p class="flowing-text" id="dynamicText">
+                    这里没有边界，只有<span class="text-rainbow">流动的定义</span>
+                </p>
+                <div class="particle-text" id="particleWords"></div>
+            </div>
+            
+            <div class="portal-grid">
+                <a href="pages/medium/index.html" class="portal-card" data-category="medium">
+                    <div class="portal-icon">🖼️</div>
+                    <h3>载体探索</h3>
+                    <p>从传统画布到数字像素，载体即表达</p>
+                    <div class="portal-stats">
+                        <span><i class="fas fa-image"></i> 14个载体分类</span>
+                        <span><i class="fas fa-users"></i> 236件作品</span>
+                    </div>
+                </a>
+                
+                <a href="pages/form/index.html" class="portal-card" data-category="form">
+                    <div class="portal-icon">🌀</div>
+                    <h3>形式边界</h3>
+                    <p>抽象、叙事、互动...形式正在溶解</p>
+                    <div class="portal-stats">
+                        <span><i class="fas fa-tags"></i> 89种标签</span>
+                        <span><i class="fas fa-comment"></i> 512条讨论</span>
+                    </div>
+                </a>
+                
+                <a href="pages/history/index.html" class="portal-card" data-category="history">
+                    <div class="portal-icon">📜</div>
+                    <h3>时间之河</h3>
+                    <p>美在历史中流动，在时代中呼吸</p>
+                    <div class="portal-stats">
+                        <span><i class="fas fa-timeline"></i> 交互时间轴</span>
+                        <span><i class="fas fa-landmark"></i> 7个时代</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="scroll-guide">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <p>向下探索意境</p>
+        </div>
+    </section>
+
+    <!-- 动态案例展示 -->
+    <section class="dynamic-cases">
+        <div class="section-header">
+            <h2><i class="fas fa-star"></i> 意境瞬间</h2>
+            <p>从独立案例文件夹中动态加载的精选作品</p>
+            <div class="case-filter">
+                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn" data-filter="trending">流动</button>
+                <button class="filter-btn" data-filter="new">新生</button>
+                <button class="filter-btn" data-filter="interactive">互动</button>
+            </div>
+        </div>
+        
+        <div class="cases-container" id="casesContainer">
+            <!-- 案例将通过JavaScript从cases文件夹动态加载 -->
+            <div class="loading-cases">
+                <div class="loading-spinner"></div>
+                <p>正在从独立文件夹加载意境案例...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 用户定义区域 -->
+    <section id="contribute" class="contribute-section">
+        <div class="contribute-container">
+            <div class="contribute-header">
+                <h2><i class="fas fa-seedling"></i> 定义你的美</h2>
+                <p>在此提交你的作品，它将存放在你的独立空间</p>
+            </div>
+            
+            <div class="contribute-form">
+                <div class="form-group">
+                    <input type="text" id="contributeTitle" placeholder="为你的作品命名（或不命名）" maxlength="50">
+                    <div class="char-count"><span id="titleCount">0</span>/50</div>
+                </div>
+                
+                <div class="form-group">
+                    <textarea id="contributeDesc" placeholder="描述你的意境、感受或留白..." rows="3" maxlength="300"></textarea>
+                    <div class="char-count"><span id="descCount">0</span>/300</div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <select id="contributeCategory">
+                            <option value="">选择分类（或创造新分类）</option>
+                            <option value="载体">艺术载体</option>
+                            <option value="形式">艺术形式</option>
+                            <option value="历史">历史时代</option>
+                            <option value="custom">自定义分类</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group tag-input-container">
+                        <div class="tag-input" id="tagInput">
+                            <input type="text" id="newTag" placeholder="创建你的标签（回车添加）">
+                        </div>
+                        <div class="tag-preview" id="tagPreview"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>拖放图片或点击上传（可选）</p>
+                        <input type="file" id="imageUpload" accept="image/*">
+                        <div class="upload-preview" id="uploadPreview"></div>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button class="btn-secondary" id="clearForm">
+                        <i class="fas fa-eraser"></i> 清空
+                    </button>
+                    <button class="btn-primary" id="submitContribution">
+                        <i class="fas fa-paper-plane"></i> 发布到我的空间
+                    </button>
+                </div>
+                
+                <div class="user-space-link">
+                    <p>你的作品将保存在：<code id="userSpacePath">user_[your_id]/contributions/</code></p>
+                    <a href="#" class="view-space-btn">查看我的独立空间 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">🪐</div>
+                    <h3>不被定义的美</h3>
+                    <p class="footer-tagline">意境 · 流动 · 自定义</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>艺术探索</h4>
+                        <a href="pages/medium/index.html">载体分类</a>
+                        <a href="pages/form/index.html">形式分类</a>
+                        <a href="pages/history/index.html">历史脉络</a>
+                        <a href="#contribute">参与定义</a>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>我的空间</h4>
+                        <a href="#" id="myContributions">我的投稿</a>
+                        <a href="#" id="myTags">我的标签</a>
+                        <a href="#" id="myCollections">我的收藏</a>
+                        <a href="#" id="mySettings">空间设置</a>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>联系与分享</h4>
+                        <div class="contact-info">
+                            <p><i class="fas fa-phone"></i> 13377886896</p>
+                            <p><i class="fas fa-envelope"></i> 3114228696@qq.com</p>
+                            <p><i class="fas fa-map-marker-alt"></i> 意境网络空间</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-external">
+                    <h4>我的其他空间</h4>
+                    <div class="external-links">
+                        <a href="https://yohayi.github.io/-history/" target="_blank" class="external-link">
+                            <i class="fas fa-code"></i> 信技化生-技术交流
+                        </a>
+                        <a href="https://yohayi.github.io/jinghongzhai--/" target="_blank" class="external-link">
+                            <i class="fas fa-pagoda"></i> "惊鸿斋"官方网站
+                        </a>
+                        <a href="https://yohayi.github.io/my-personal-edu-website/" target="_blank" class="external-link">
+                            <i class="fas fa-graduation-cap"></i> 杭州市教育总结
+                        </a>
+                        <a href="https://yohayi.github.io/2026--/index.html" target="_blank" class="external-link">
+                            <i class="fas fa-chart-line"></i> 教育数据与交流
+                        </a>
+                        <a href="https://yohayi.github.io/geometry-string-map/" target="_blank" class="external-link">
+                            <i class="fas fa-atom"></i> 几何弦理论课后交流
+                        </a>
+                        <a href="https://yohayi.github.io/BDCG---/" target="_blank" class="external-link">
+                            <i class="fas fa-gamepad"></i> BDCG游戏技术与美术
+                        </a>
+                        <a href="https://yohayi.github.io/yohayi-/" target="_blank" class="external-link">
+                            <i class="fas fa-user"></i> 游海洋个人网站
+                        </a>
+                        <a href="https://yohayi.github.io/-AI-/" target="_blank" class="external-link">
+                            <i class="fas fa-brain"></i> 流式AI监控
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-meta">
+                    <p>意境数据：<span id="liveStats">加载中...</span></p>
+                    <p>最后更新：<span id="lastUpdate">今天</span></p>
+                </div>
+                
+                <div class="footer-copyright">
+                    <p>© <span id="currentYear"></span> 不被定义的美 | 所有定义都是临时的，所有美都是流动的</p>
+                    <p class="footer-note">本空间采用开放式意境架构，内容存储在独立文件夹中</p>
+                </div>
+                
+                <div class="footer-tools">
+                    <button class="tool-btn" id="exportData">
+                        <i class="fas fa-download"></i> 导出我的空间
+                    </button>
+                    <button class="tool-btn" id="backupBtn">
+                        <i class="fas fa-save"></i> 备份意境
+                    </button>
+                    <div class="theme-toggle-small">
+                        <i class="fas fa-adjust"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 脚本 -->
+    <script src="script.js"></script>
+    <script src="意境调节器.js"></script>
+    <script src="动态背景.js"></script>
+    <script src="案例加载器.js"></script>
+    <script src="用户系统.js"></script>
+</body>
+</html>
